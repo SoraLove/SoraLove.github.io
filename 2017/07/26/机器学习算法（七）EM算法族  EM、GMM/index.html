@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="">
-  <title>Archives: 2017/7 | 谦芊珺的博客</title>
+  <title>谦芊珺的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="机器学习  人工智能">
+  <meta name="description" content="#一、GMM算法EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。 ##1、GMM算法问题描述GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。 假设有n个样本点$x{1},x{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数： 1、不同高斯分布的数据占比：$\pi{i}$2、每个高斯分布的均值与方差：$\pi{i}">
 <meta name="keywords" content="机器学习，人工智能">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="谦芊珺的博客">
-<meta property="og:url" content="/archives/2017/07/index.html">
+<meta property="og:url" content="/2017/07/26/机器学习算法（七）EM算法族  EM、GMM/index.html">
 <meta property="og:site_name" content="谦芊珺的博客">
-<meta property="og:description" content="机器学习  人工智能">
+<meta property="og:description" content="#一、GMM算法EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。 ##1、GMM算法问题描述GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。 假设有n个样本点$x{1},x{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数： 1、不同高斯分布的数据占比：$\pi{i}$2、每个高斯分布的均值与方差：$\pi{i}">
+<meta property="og:updated_time" content="2017-07-26T15:01:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谦芊珺的博客">
-<meta name="twitter:description" content="机器学习  人工智能">
+<meta name="twitter:description" content="#一、GMM算法EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。 ##1、GMM算法问题描述GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。 假设有n个样本点$x{1},x{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数： 1、不同高斯分布的数据占比：$\pi{i}$2、每个高斯分布的均值与方差：$\pi{i}">
   
     <link rel="alternative" href="/atom.xml" title="谦芊珺的博客" type="application/atom+xml">
   
@@ -145,400 +146,165 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-机器学习算法（七）EM算法族  EM、GMM" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#一、GMM算法<br>EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。</p>
+<p>##1、GMM算法问题描述<br>GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。</p>
+<p>假设有n个样本点$x<em>{1},x</em>{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数：</p>
+<p>1、不同高斯分布的数据占比：$\pi<em>{i}$<br>2、每个高斯分布的均值与方差：$\pi</em>{i}~N(\mu<em>{i},\sigma</em>{i}^2)$</p>
+<p>我们的目的是求出每个$\pi<em>{i}$，$\mu</em>{i}$，$\sigma_{i}$</p>
+<p>因此我们的目标即是求合适的$\pi<em>{i}$，$\mu</em>{i}$，$\sigma_{i}$来最大化对数似然函数。</p>
+<p>$$l<em>{\pi,\mu\sigma}(x)=\sum^{N}</em>{i=1}log[\sum^{K}<em>{k=1}\pi</em>{k}N(x<em>{I}|\mu</em>{k},\sigma_{k})]$$<br>这个目标函数中既有对数又有加和，因此不能直接求导因此我们采用迭代的方法。</p>
+<p>##2、GMM迭代方法描述<br>Step1:对于每一个样本点i，计算它由不同组分(第k个组分)生成的概率$$r(i,k)=\dfrac{\pi<em>{k}N(x</em>{i}|\mu<em>{k},\sigma</em>{k})}{\sum^{K}<em>{j=1}\pi</em>{j}N(x<em>{i}|\mu</em>{j},\sigma<em>{j})}$$<br>Step2:由各个样本点的$r(i,k)$更新参数$\pi</em>{i}$，$\mu<em>{i}$，$\sigma</em>{I}$</p>
+<p>Step3:回到Step1，迭代更新</p>
+<p>这其实就是EM算法的E步和M步的过程。</p>
+<p>下面给出通用的EM算法伪代码。</p>
+<p>##3、EM算法</p>
+<p><python><br>Repeat util 收敛{<br>    (E步)：对每个样本$x<em>{i}$,计算$$Q</em>{i}(z^{i})=P(z^{i}|x^{i};\theta)$$<br>    (M步)：对每个参数$\theta$，有$$\theta:=argmax<em>{\theta }l\left( \theta \right) =argmax</em>{\theta}\sum^{}<em>{i}\sum^{}</em>{z^{i}}Q<em>{i}(z^{i})log\dfrac{P(x</em>{i};z<em>{i};\theta)}{Q</em>{i}(z_{i})}$$<br>}</python></p>
+<python>
+
+<p>其中，E步的那个$Q$就是第i个样本的分布，就是那个$r(i,k)$<br>这个形式可以推导可得，其实是等价的</p>
+<p>M步中，那个公式就是对数似然函数，求使它最大化的参数</p>
+<p>总结：EM算法说到底是一个迭代更新的过程。它首先对各个样本计算分布，然后更新参数；再计算分布，再更新参数……</p>
+</python>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（二）逻辑斯蒂回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:/2017/07/26/机器学习算法（七）EM算法族  EM、GMM/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（六）词向量/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（五）深度学习/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2017/07/26/机器学习算法（八）贝叶斯算法族、朴素贝叶斯/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/26/机器学习算法（六）K-Means聚类、层次聚类、密度聚类、谱聚类/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（四）统计机器翻译SMT/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（三）主题模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（二）语言模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（一）基础/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（九）EM和贝叶斯网络的结合  HMM模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（八）贝叶斯算法族、朴素贝叶斯/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（七）EM算法族  EM、GMM/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（六）K-Means聚类、层次聚类、密度聚类、谱聚类/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（五）集成/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（四）决策树/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（三）支持向量机/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（一）线性回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （一）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T10:06:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （二）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路（序）———谈谈入坑和入坑后的感想/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -561,8 +327,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -147,16 +147,17 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-机器学习小白之路 （一）机器学习各项相关宏观知识综述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-机器学习算法（二）逻辑斯蒂回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="机器学习小白之路-（一）机器学习各项相关宏观知识综述"><a href="#机器学习小白之路-（一）机器学习各项相关宏观知识综述" class="headerlink" title="机器学习小白之路 （一）机器学习各项相关宏观知识综述"></a>机器学习小白之路 （一）机器学习各项相关宏观知识综述</h1><h2 id="大数据、人工智能、机器学习、数据挖掘、神经网络、深度学习等名词的释义及辨析"><a href="#大数据、人工智能、机器学习、数据挖掘、神经网络、深度学习等名词的释义及辨析" class="headerlink" title="大数据、人工智能、机器学习、数据挖掘、神经网络、深度学习等名词的释义及辨析"></a>大数据、人工智能、机器学习、数据挖掘、神经网络、深度学习等名词的释义及辨析</h2><p>在本文中，我主要分享一下我对机器学习一些宏观的看待，这些是我学习中的一点心得，不一定完全准确，如果有有问题的部分，欢迎大家进行批判指正。</p>
-<h3 id="1、人工智能、机器学习和神经网络的关系"><a href="#1、人工智能、机器学习和神经网络的关系" class="headerlink" title="1、人工智能、机器学习和神经网络的关系"></a>1、人工智能、机器学习和神经网络的关系</h3><p>这三个词是依次包含的关系，具体方式为：人工智能的概念最大，它包含机器学习；机器学习的概念次之，它包含神经网络。<br>人工智能是近几年兴起的概念，主要是指可以利用数据、及相关的一些算法技术，使机器产生对人的行为的模拟(个人理解，不一定准确)。人工智能技术包括机器学习、自然语言处理、语音识别、图像处理、模式识别等许多技术，它们互相之间既有连续又有区别。不过可以看到，机器学习不可能等同于人工智能，它只是人工智能的一部分，或者说是人工智能技术的一个重要理论工具。<br>机器学习技术主要是指一系列的算法，这些算法可以通过对已知数据的分析和建模，对未知数据的某些行为作出指导。例如，我可以通过统计1000个男性和女性的身高，并对其分别建模。此后再给出一个人的身高体重数据，我可以通过已有的模型推测他大概是男性还是女性。机器学习包括许多技术，主要分为三个分支，即监督学习、非监督学习和增强学习。有学者曾经评出了“十大最经典的机器学习算法”，有兴趣的读者可以自行百度。<br>机器学习包含多种算法，例如决策树、支持向量机、朴素贝叶斯等。而神经网络也是诸多机器学习算法中的一种。近几年，神经网络算法大火。然而，它并不是一个近期才发展起来的算法。很早就有了神经网络算法，它也曾经火过一段时间，然而，就像很多主播或网红一样，没过多久，它就过气了。它过气主要是因为当时它的未知参数过多导致计算量过大，而且它是一个“黑盒子”模型。因此，当时又出现了“人美声甜”的“支持向量机”算法，理论优美漂亮，参数可调可控，一举便占领了神经网络的宝座，抢走了神经网络的风头。然而风水轮流转，近些年也正是因为大数据技术的发展，计算能力得到了提高，由神经网络演变而来的深度学习技术成为了主导。深度学习技术也确实在图像、视觉、自然语言等方面发挥了它强大的实力。之前的AlphaGo模型就是采用了深度学习技术，让我们看到了机器智能化的潜力。因此神经网络又一举夺回当年的桂冠，成为了时下最炙手可热的算法。</p>
-<h3 id="2、机器学习与数据挖掘的关系"><a href="#2、机器学习与数据挖掘的关系" class="headerlink" title="2、机器学习与数据挖掘的关系"></a>2、机器学习与数据挖掘的关系</h3><p>要说机器学习和数据挖掘，其实他俩的区别真心不算特别大。很多书或教材也会把它们叫混，这倒也不是因为写东西的人不知道它们的区别，而实在是它们的区别不大，没必要那么强调它们的不同。<br>要说起区分，机器学习比数据挖掘的概念要窄。我认为有如下公式。<br>数据挖掘=机器学习+数据处理技术<br>机器学习主要是一系列的算法理论，它是理论上的东西，强调各种算法的联系和区别、算法的优化等。而数据挖掘主要是强调工程上的东西，如如何获取到数据、如何存储这些数据、如何清洗这些数据、如何提取合适的特征、如何选用合适的机器学习算法及合适的参数、如何评估等。</p>
-<h3 id="3、神经网络与深度学习的关系"><a href="#3、神经网络与深度学习的关系" class="headerlink" title="3、神经网络与深度学习的关系"></a>3、神经网络与深度学习的关系</h3><p>深度学习是神经网络的一种，又称为“深度神经网络”。言外之意，神经网络还有“浅层的”，那种就只是神经网络，不是深度学习。<br>神经网络的参数量巨大，深度学习更是动辄几百上千个参数，数据量的增多、计算能力的增强为深度学习开辟了土壤，在近几年大放异彩。</p>
-<h3 id="4、大数据与其他名词的关系"><a href="#4、大数据与其他名词的关系" class="headerlink" title="4、大数据与其他名词的关系"></a>4、大数据与其他名词的关系</h3><p>我个人觉得，大数据这个词和前面的这些词并不是在描述同一个东西，或者它们看问题的切入点不一样。其他词语更在于“智能”和“挖掘”两个方面，而大数据的侧重点在它的“大”上。这个“大”可以是没有智能相关技术的大。例如，它可以仅是大的数据量、大的速度、大的存储，大的计算能力。但不可否认的是，正是因为大的数据，我们才能更好地从数据中挖掘信息，才有了今天的人工智能、深度学习等技术的飞黄腾达。我认为，大数据和人工智能更像是一个人的两条腿，是一个互相支持，互相促进的关系。</p>
+        <p>上文中说过，逻辑斯蒂回归虽然称为回归，但它实际上是一种分类算法。认识逻辑斯蒂回归，首先需要知道sigmoid函数。下面公式1即为sigmoid函数$$g\left( x\right) =\dfrac {1}{1+e^{-x}}$$它的函数图像如图所示。<br><img src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAiVAAAAJGNiYjA1NjM2LTY4OWUtNDJmYS04NTdkLTA5Y2NkMzcxZDZlMA.png" alt="这里写图片描述"></p>
+<p>##1、算法介绍<br>和上文中的回归算法一样，我们有m条数据，每条数据有n个特征和1个标签。不同的是，上文的标签是一个连续型变量，本文中的标签是一个离散型变量，且它只有两个值，[0,1]。<br>在线性回归中，有$\widehat{y}=\theta ^{T}x$，而在逻辑斯蒂回归中，其结果就是在线性回归外面套上sigmoid函数，即$$\widehat {y}=\dfrac {1}{1+e^{-\theta ^{T}x}}$$因此，$\widehat {y}$是一个连续变量，其取值范围为(0,1)。</p>
+<p>对于$y$和$\widehat {y}$,我们希望，当$\widehat {y}$接近1时，$y$也大概率为1；当$\widehat {y}$接近0时，$y$也大概率为0。因此可以做出如下假设。<br>$$p(y=1| x,\theta )=\widehat {y}$$ $$p(y=0| x,\theta )=1-\widehat {y}$$<br>以上两式可以统一为$$P\left( y| x,\theta \right) =\widehat {y}^{y}\left( 1-\widehat {y}\right) ^{1-y}$$同理，由于x和y均已知，它是一个关于$\theta$的函数。<br>据此可求出其最大似然函数：$$L\left( \theta \right) =\prod ^{m}<em>{i=1}\widehat {y}^{y}\left( 1-\widehat {y}\right) ^{1-y}$$，$i$为第$i$个样本。<br>同理，可求其对数似然函数为$l\left( \theta \right)$，并对每个$\theta$求偏导。求导结果为：$$\dfrac {\partial l\left( \theta \right) }{\partial \theta</em>{ j}}=\sum ^{m}<em>{i=1}\left( y^{i}-\widehat {y}^{i}\right) x^{i}</em>{j}$$</p>
+<p>对其进行梯度上升学习，有<br>$$\theta <em>{j}=\theta </em>{j}+\alpha \left( y-\widehat {y}\right) x_{j}$$</p>
+<p>逻辑斯蒂回归的目标函数被习惯性的认为成对数似然函数的相反数，即$$loss=-l\left( \theta \right) $$</p>
+<p>前文中，我们认为y的取值为0，1。若认为y的取值为+1和-1，则可推导出一个较为优美的损失函数如下。$$loss=\sum ^{m}<em>{i=1}\left[ \ln \left( 1+e^{-y</em>{i}\widehat {y}_{i}}\right) \right] $$</p>
 
       
 
@@ -169,7 +170,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/24/机器学习小白之路 （一）机器学习各项相关宏观知识综述/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（二）逻辑斯蒂回归/">展开全文 >></a>
         </p>
       
 
@@ -199,14 +200,31 @@
 
 
   
-    <article id="post-机器学习小白之路 （二）机器学习各项相关宏观知识综述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-自然语言处理（六）词向量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="机器学习小白之路-（二）机器学习各项相关宏观知识综述"><a href="#机器学习小白之路-（二）机器学习各项相关宏观知识综述" class="headerlink" title="机器学习小白之路 （二）机器学习各项相关宏观知识综述"></a>机器学习小白之路 （二）机器学习各项相关宏观知识综述</h1><h2 id="各项技术的基本涵盖点和主要技术"><a href="#各项技术的基本涵盖点和主要技术" class="headerlink" title="各项技术的基本涵盖点和主要技术"></a>各项技术的基本涵盖点和主要技术</h2><h3 id="1、大数据技术"><a href="#1、大数据技术" class="headerlink" title="1、大数据技术"></a>1、大数据技术</h3><p>前面已经多次提到了，大数据技术主要包括大数据的获取、存储、处理等。其相关核心技术包括：<br>1、大数据的获取目前主要来源于大型互联网公司的数据、大量移动端数据、传感器数据等。同时大量的网页中包含许多非结构化数据，如淘宝图片、淘宝评论、微博评论等，这些数据需要通过爬虫获取。<br>2、大数据的存储不同于一般数据的存储。一般数据可以存储在关系型数据库里，而大数据由于数量巨大，往往很难用一台机器的数据库进行存储，因此可以存储在分布式数据库里。另外，由于大量非结构化数据的存在，这些数据需要存储在非关系型数据库里。<br>3、大数据的计算需要很强的计算能力，在早年只有CPU的时候，执行一些大运算量的计算是很艰难的。现在有了GPU，GPU用它的矩阵操作能力和大带宽为高计算量打开了新的大门。现在硬件技术还在继续发展，google开放的TPU据说比GPU还要快上25倍。总之无论如何，人们对大数据量技术的硬件技术探索不会停止。<br>4、提到大数据，不得不提的就是大数据框架。目前比较主流的几个大数据框架包括hadoop、spark和storm。其中，hadoop可以说是最为经典也是最被人广泛使用的框架。它的前身是google提出的“三架马车”，GFS，MapReduce和Bigtable。现在hadoop已经成为了一个拥有完整生态系统的架构。然而hadoop也有它固有的缺点。比如，它的计算模式只有map和reduce两种，不够灵活；计算速度慢等。Spark的出现改善了这种情况，Spark采用内存计算机制，使计算更快，并设计了多种RDD，有多种操作。同时Spark生态系统中还综合了流处理、图计算等技术，使其成为了更加炙手可热的分布式框架。Storm主要用于流处理，近几年没那么火了，所以不说了。</p>
-<h3 id="2、机器学习技术"><a href="#2、机器学习技术" class="headerlink" title="2、机器学习技术"></a>2、机器学习技术</h3><p>机器学习是一系列算法的合称，这些算法均可以帮助我们从一群数据中挖掘出想要的信息。机器学习算法的分类有不同的指标，比较常见的是将机器学习算法分为监督学习、非监督学习和增强学习三个大类。<br>1、监督学习：机器学习算法中最庞大的一个分支，拥有众多经典算法。监督学习需要训练数据，通过训练数据可以训练出一个模型。将新的数据放入训练出的模型后就能得到预测的结果。比较经典的监督学习算法包括决策树、支持向量机、朴素贝叶斯、逻辑斯蒂回归等。<br>2、非监督学习，非监督学习不需要训练数据和训练过程，它利用已有数据自身的性质将它们天然地分成多类。常用的非监督学习主要是各种聚类算法，如K-means聚类、谱聚类、密度聚类、层次聚类等。<br>3、增强学习：增强学习需要将训练的结果对训练过程做出反馈。如果训练结果是好的就给正反馈，如果训练结果不好就给负反馈。以此来不断调整学习的策略。</p>
-<h3 id="3、数据挖掘技术"><a href="#3、数据挖掘技术" class="headerlink" title="3、数据挖掘技术"></a>3、数据挖掘技术</h3><p>谈到数据挖掘技术，我主要想谈一谈数据分析技术。数据分析技术包括一个基本流程，这个流程如下所示：<br>1、业务分析<br>2、数据采集<br>3、数据预处理<br>4、数据建模<br>5、模型评估<br>6、结果可视化<br>以上6步是一个完整的数据分析流程。其中，业务分析和数据采集是分析的准备阶段；数据预处理是数据分析的基础，它的目的是将采集回来的原始数据清洗、转换成为可以直接拿来建模的数据。例如，采回来的的数据中可能会有一些缺失数据、而且采集数据可能过于稀疏等，这些都需要进行变换。同时，特征工程也是数据预处理中至关重要的步骤。数据往往有诸多特征，这些特征也许并不是全都有用的。有很多冗余。有些特征甚至对数据还有负的影响作用。这些特征都需要特征工程去处理。数据建模就是将预处理好的数据用各种机器学习算法进行训练，得到训练模型。得到模型后，在模型评估阶段，我们将用测试数据对模型进行评估，常用的评估方法是k-折交叉验证法，常用的指标包括precision、recall、F-value等。最后的可视化主要是对结果的一个对外交互。属于比较上层的部分。</p>
+        <p>目的：把文本用数据的形式表达出来<br>方法：传统基于规则，现代基于统计</p>
+<p>###一、词编码方式1——离散表示<br>1、One-hot编码<br>      和句子中顺序无关，耗空间耗时</p>
+<p>2、词袋模型<br>每个数表示该词出现的次数（One-hot的加和）</p>
+<p>3、TF_IDF<br>每个数代表该词在整个文档中的占比</p>
+<p>4、N-gram<br>相邻N个词作为一组进行编码，缺点是浪费空间、无法衡量词之间的关系</p>
+<p>###二、词编码方式2——分布式表示</p>
+<p>所谓分布式表示，就是将“红色小型汽车”变成“红色+小型+汽车”</p>
+<p>于是产生了现代统计自然语言处理中最有创见的想法之一：用一个词附近的其他词来表示该词。</p>
+<p>一开始用“共现矩阵”表示，后来发现它有耗空间过大、稀疏等问题，因此需要找到方法<strong>构造低维稠密向量作为词的分布式表示 (25~1000维)!</strong></p>
+<p>一开始有用SVD分解的方法，后来发现它与其他深度学习模型框架差异大</p>
+<p>又有了NNLM方法如下图所示：（七月算法自然语言处理课程PPT）<br><img src="http://img.blog.csdn.net/20170726203735988?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170726203825157?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>这个模型复杂度较高。于是有了现在最常用的word2vec模型。</p>
+<p>###三、Work2Vec</p>
+<p>####1、CBOW<br>待续</p>
+<p>####2、Skip-Gram<br>待续</p>
+<p>当语料特别大时，多用Skip-Gram</p>
+<p>-》Word2Vec对多义词表示的并不好，因此有了改进版本GloVe，但用的不多。</p>
+<p>-》还有sense2vec模型，它是将词性和word2vec结合的技术。</p>
+<p>-》seq2seq    待续</p>
 
       
 
@@ -219,7 +237,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/24/机器学习小白之路 （二）机器学习各项相关宏观知识综述/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/26/自然语言处理（六）词向量/">展开全文 >></a>
         </p>
       
 
@@ -249,13 +267,21 @@
 
 
   
-    <article id="post-机器学习小白之路（序）———谈谈入坑和入坑后的感想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-自然语言处理（五）深度学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="机器学习小白之路（序）———谈谈入坑和入坑后的感想"><a href="#机器学习小白之路（序）———谈谈入坑和入坑后的感想" class="headerlink" title="机器学习小白之路（序）———谈谈入坑和入坑后的感想"></a>机器学习小白之路（序）———谈谈入坑和入坑后的感想</h1><h2 id="一、我是如何入坑的"><a href="#一、我是如何入坑的" class="headerlink" title="一、我是如何入坑的"></a>一、我是如何入坑的</h2><p>我在读本科的时候对“机器学习”、“人工智能”等名词是完全没有概念的。当时读的是电子信息工程专业，每天主要就是和各种信号处理机制、滤波器、调制解调器等打交道，当时一心想读一个通信领域或信号领域的研究生，为国家的通讯事业奉献一生。然而一个偶然，读研期间选择了一个以“大数据”为主要研究方向的导师，自此生活便走上了与数据相关的道路，和信号处理那些东西就不在有什么关系了。<br>记得我刚考上研究生的时候，对“大数据”毛线都不懂。然后就被导师要求写一篇关于大数据的综述调研。我硬着头皮鏖战了好几天，最终写出了一个以hadoop框架和spark框架为主的四不像的东西。最后导师看了估计心里暗暗叹了口气，然后这件事就没有然后了。<br>但是在这次没什么技术含量的调研当中，我还是大致初窥了大数据领域的全貌。我大概了解到，大数据技术之所以在近期倍广泛的提出，主要是由于移动互联网和物联网的普及产生了大量数据，并且我们有了越来越强大的存储资源和计算资源。在有了数据，又有了处理数据的能力之后，我们便产生了从这些数据中挖掘信息的想法。因此也催生了大数据的一系列相关技术。<br>大数据技术主要包括以下一些方面：大数据获取、大数据存储、大数据并行计算、大数据清洗处理、大数据中的数据挖掘、机器学习、结果可视化等。其中，大数据的数据挖掘和机器学习技术应该算是大数据各项技术中较为核心且更偏重于理论和算法等技术。它们也是从数据中挖掘信息的关键技术。可以说，无论是存储技术还是计算能力的提升，都是为通过机器学习等技术挖掘信息作准备工作的。因此，当时的我就对数据挖掘和机器学习技术有了较深的印象。<br>比较严肃的扯了一堆，以上说的基本都是废话，真正使我入坑的原因是我是个臭美的妹子而在我苦恼淘宝找不到合适我的好看衣服时我猛然发现机器学习就是干这个的。<br>于是我就入坑了，然后就没有然后了。</p>
-<h2 id="二、谈谈我的感想"><a href="#二、谈谈我的感想" class="headerlink" title="二、谈谈我的感想"></a>二、谈谈我的感想</h2><p>入坑后我就开始搜集各方面的资料，并寻找一些机会来学习机器学习的相关知识。当时主要是上了一些数据挖掘相关的课程，当时用的是R语言，跟着老师做了一些比较简单的手写数字识别、文理科分类、简单预测任务等。这个学科刚开始学的时候有一种越学越有趣的感觉。因为机器学习真的可以做好多有趣的事情，比如可以预测下一个季度的流行歌手，预测一场球赛的胜利、预测股市的涨跌等。虽然很多尝试仅仅可以用在实验中，比如预测股市的涨跌，如果你真的相信你训练的模型，搞不好会血本无归。但是这种憧憬是好的，学习机器学习的动力充足无比，好像学完了我就可以预测未来拯救地球一样。<br>在简单学习了一些基础算法使用和R语言之后，我又开始学一些算法深层的东西，比如SVM的算法原理、决策树、朴素贝叶斯的算法原理等。从数学层面渐渐了解了更多的机器学习算法。<br>学习的期间主要还看了一些书，比如李航的《统计学习方法》、周志华的《机器学习》等，这两本书写的真的很好，让我看到了所谓的大家风范。读书期间，慢慢领悟到，机器学习不仅仅是几个算法、几个任务，它更是一个需要综合多种领域知识的非常集大成的技术群。慢慢地也感受到了这个领域存在的竞争和难点。<br>现在的我虽然还是一个小白，但对机器学习也有了一些更深的认识。最近也快要找工作了，发现大多数的机器学习岗位其实并不想一开始学习时想象的那么有趣。在工作中，可能有70%的时间是在“清洗数据”，也就是在乱七八糟数据中“捡垃圾”，挑出那些不能用的、对结果有负影响的数据；90%的时间在调参数，也就是把程序都写好了，然后用一个参数跑一遍，不好了换个参数再跑一遍。这些过程都是比较无聊的。那么高大上的算法部分去哪了呢？一般在程序中，那些著名的算法都被封装好了，用起来仅仅是一句话而已。<br>以上就是我对机器学习领域对入坑到现在的一个整体认识。你说它神奇，它没那么神奇。你不可能学习它就去拯救地球，改变世界，成为下一个巴菲特，很多时候，你发现给你一堆数据让你分个男女你都只能得到70%左右的准确率；另一方面，你说它枯燥无聊，而它确实在慢慢改变这个世界。AlphaGo、无人车、增强现实等技术无一不是基于它的基础理论。因此对于机器学习，应该洗尽铅华，辩证的看待，毕竟它到底有没有用，还是要看你是不是大牛而已。</p>
+        <p>###1、tips<br>1、行业基准：用词袋模型表示句子，用SVM或LR做回归，用自己的模型和它做对比<br>2、分词：启发式或机器学习（HMM，CRF）<br>3、深度学习是端到端的</p>
+<p>###2、Auto-Encoder<br>可将语料编码化，降维降噪</p>
+<p>###3、CNN<br>机器自动学习卷积滤镜</p>
+<p>用word2vec将一句话处理成一个矩阵，用CNN</p>
+<p>案例：文本—&gt;(预处理、TF-IDF、word2vec) —&gt;词向量—&gt;(LR、SVM、LSTM)—&gt;标签</p>
+<p>###4、RNN—&gt;LSTM<br>通过遗忘门、记忆门等控制。例如，异或就是遗忘，和1相与就是记忆等。</p>
+<p>遗忘还是记忆是机器自己学习的。</p>
+<p>另外还有更新门和输出门</p>
+<p>案例：用于判断生成下一个词、句子、单词、图片等。</p>
+<p>####总结：AE用于压缩问题；CNN用于文本分类；RNN用于文本生成</p>
 
       
 
@@ -268,7 +294,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/24/机器学习小白之路（序）———谈谈入坑和入坑后的感想/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/26/自然语言处理（五）深度学习/">展开全文 >></a>
         </p>
       
 
@@ -298,6 +324,270 @@
 
 
   
+    <article id="post-自然语言处理（四）统计机器翻译SMT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###1、统计机器翻译三要素<br>1、翻译模型<br>2、语言模型<br>3、排序模型</p>
+<p>###2、翻译流程<br>1、双语数据预处理<br>2、词对齐<br>3、构造短语翻译表<br>4、对短语翻译表进行概率估计<br>5、解码，beam search<br>6、评估</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/自然语言处理（四）统计机器翻译SMT/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-自然语言处理（三）主题模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为了解决“一词多义”和“多词一意”的问题，引入“主题”</p>
+<p>LDA本质是一个三层贝叶斯网络</p>
+<p>###1、共轭分布<br>1、Beta分布是二项分布的共轭先验分布<br>2、Dirichlet分布是多项分布的共轭先验分布</p>
+<p>Dirichlet分布的参数$[\alpha<em>{1},\alpha</em>{2},….,\alpha_{n}]$，一般$\alpha$都取一样的值。</p>
+<p> $\alpha=1\quad$      均匀分布<br>  $\alpha&gt;1\quad$      主题分布相等的概率增大<br>  $\alpha&lt;1\quad$      某一主题突出的概率增大</p>
+<p>###2、LDA模型<br>LDA模型框图如下图所示<br><img src="http://www.myexception.cn/img/2012/12/22/130940753.jpg" alt="这里写图片描述"></p>
+<p>流程如下：</p>
+<p>1、取$\alpha$,用$Dir(\alpha)$采样得到主题分布$v<em>{m}$<br>2、对$v</em>{m}$采样得到某一主题<br>3、取$\beta$,用$Dir(\beta)$对每个主题分别采样得到词分布$\varphi_{k}$<br>4、取得到的主题的对应的词分布，<br>5、在词分布中采一个词</p>
+<p>###3、LDA问题</p>
+<p>LDA问题的已知是：已知词语$w$(可观测),已知先验超参数$\alpha$和$\beta$</p>
+<p>LDA问题的所求是：主题z，主题分布$\theta$,词分布$\varphi$</p>
+<p>###4、Gibbs采样<br>Gibbs采样是一个为词语标记主题的算法。其流程如下：<br>1、随机为文本中每个词分配主题<br>2、统计：a.每个主题z下出现词t的数量. b.每个文档m下出现主题z的数量<br>3、计算$P(z<em>{i}|z</em>{i-1,},w)$,返回步骤2，迭代。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/自然语言处理（三）主题模型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-自然语言处理（二）语言模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##1、词袋模型<br>认为词语间相互独立，失去词语间的顺序信息，相当于把词放在一个袋子里。</p>
+<p>##2、N-gram模型<br>引入了词与词之间的顺序。</p>
+<p>这个N是一个超参数。<br>1、一般能用2-gram尽量用2-gram。<br>2、平时3-gram用的多。<br>3、n&gt;=4的情况很少，在有特别多语料时可以尝试到5-gram</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/自然语言处理（二）语言模型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-自然语言处理（一）基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##1、字符串常用命令</p>
+<p>##2、正则表达式</p>
+<p>##3、Python的re模块</p>
+<p>##4、jieba分词工具</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/自然语言处理（一）基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习算法（九）EM和贝叶斯网络的结合  HMM模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##1、隐马尔可夫HMM模型<br>一个隐马尔可夫模型可以表示为$$\lambda={A,B,\pi}$$具体就不说了，比较基本。</p>
+<p>##2、HMM模型的三个基本问题<br>1、概率计算问题：给定$\lambda$和观测序列${x<em>{i}}$,求$P(x</em>{i}| \lambda)$。主要方法是前向计算法或后向计算法</p>
+<p>2、学习算法问题：对于给定的一个观察值序列，调整参数λ，使得观察值出现的概率p(σ|λ)最大<br>    a.有隐变量,有监督时：HMM<br>    b.有隐变量，无监督：Baum-Welch<br>    c.无隐变量：大数定理</p>
+<p>3、预测算法：对于给定模型和观察值序列，求可能性最大的状态序列<br>主要方法是Viterbi译码法</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（九）EM和贝叶斯网络的结合  HMM模型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 

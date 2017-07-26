@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="">
-  <title>Archives: 2017/7 | 谦芊珺的博客</title>
+  <title>谦芊珺的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="机器学习  人工智能">
+  <meta name="description" content="##1、问题介绍本文只涉及二分类支持向量机。 支持向量机问题可以分为三种情况来讨论：1、硬间隔支持向量机：用于可以被一个超平面严格分开的问题中，又称为线性可分支持向量机2、软间隔支持向量机：用于可以被一个超平面非严格分开的问题中，又称线性支持向量机3、核支持向量机：用于可以被一个超曲面分开的问题中，又称非线性支持向量机 本文主要介绍硬间隔支持向量机。 所谓“可以被一个超平面严格分开”，以三维空间数">
 <meta name="keywords" content="机器学习，人工智能">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="谦芊珺的博客">
-<meta property="og:url" content="/archives/2017/07/index.html">
+<meta property="og:url" content="/2017/07/26/机器学习算法（三）支持向量机/index.html">
 <meta property="og:site_name" content="谦芊珺的博客">
-<meta property="og:description" content="机器学习  人工智能">
+<meta property="og:description" content="##1、问题介绍本文只涉及二分类支持向量机。 支持向量机问题可以分为三种情况来讨论：1、硬间隔支持向量机：用于可以被一个超平面严格分开的问题中，又称为线性可分支持向量机2、软间隔支持向量机：用于可以被一个超平面非严格分开的问题中，又称线性支持向量机3、核支持向量机：用于可以被一个超曲面分开的问题中，又称非线性支持向量机 本文主要介绍硬间隔支持向量机。 所谓“可以被一个超平面严格分开”，以三维空间数">
+<meta property="og:image" content="http://img0.imgtn.bdimg.com/it/u=1118118044,1096699419&fm=214&gp=0.jpg">
+<meta property="og:image" content="http://img3.imgtn.bdimg.com/it/u=1204778392,1987158221&fm=26&gp=0.jpg">
+<meta property="og:image" content="http://img.blog.csdn.net/20170725220238302?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-07-26T15:01:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谦芊珺的博客">
-<meta name="twitter:description" content="机器学习  人工智能">
+<meta name="twitter:description" content="##1、问题介绍本文只涉及二分类支持向量机。 支持向量机问题可以分为三种情况来讨论：1、硬间隔支持向量机：用于可以被一个超平面严格分开的问题中，又称为线性可分支持向量机2、软间隔支持向量机：用于可以被一个超平面非严格分开的问题中，又称线性支持向量机3、核支持向量机：用于可以被一个超曲面分开的问题中，又称非线性支持向量机 本文主要介绍硬间隔支持向量机。 所谓“可以被一个超平面严格分开”，以三维空间数">
+<meta name="twitter:image" content="http://img0.imgtn.bdimg.com/it/u=1118118044,1096699419&fm=214&gp=0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="谦芊珺的博客" type="application/atom+xml">
   
@@ -145,400 +150,166 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-机器学习算法（三）支持向量机" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##1、问题介绍<br>本文只涉及二分类支持向量机。</p>
+<p>支持向量机问题可以分为三种情况来讨论：<br>1、硬间隔支持向量机：用于可以被一个超平面严格分开的问题中，又称为线性可分支持向量机<br>2、软间隔支持向量机：用于可以被一个超平面非严格分开的问题中，又称线性支持向量机<br>3、核支持向量机：用于可以被一个超曲面分开的问题中，又称非线性支持向量机</p>
+<p>本文主要介绍硬间隔支持向量机。</p>
+<p>所谓“可以被一个超平面严格分开”，以三维空间数据为例，就是如下图情况：</p>
+<p><img src="http://img0.imgtn.bdimg.com/it/u=1118118044,1096699419&amp;fm=214&amp;gp=0.jpg" alt="这里写图片描述"></p>
+<p>即可以找到一个分离超平面，将正负数据点分开。</p>
+<p>假设我们有数据D={(x1,y1),(x2,y2),…,(xn,yn)},则x代表空间中的数据点，y代表该点的标签，它有两个取值，+1和-1。</p>
+<p>我们要做的事就是找到一个如下分离超平面$$y\left( x\right) =\omega ^{T}\phi \left( x\right) +b$$这个分离超平面有如下两个特点：<br>1、它可以将所有的正负例点分开<br>2、在满足1的基础上，令所有点中，距离它距离最小的点的距离最大。</p>
+<p>简单概括，就是找到一个分离超平面，使点到面的“最小距离最大化”。</p>
+<p>我们的目标就是找到这个超平面的$\omega$和$b$。</p>
+<p>##2、目标函数分析<br>根据“最小距离最大化的”目标函数思想，可以写出支持向量机的目标函数如下式1：$$\max \left{ \min <em>{i}\left[ \dfrac {y</em>{i}\left( w^{T}\phi \left( x\right) +b\right) }{\left| w\right| }\right] \right} $$我们想要求的参数$w$与$b$可表述如下：$$<br>w,b=argmax<em>{w,b} \left{ \min </em>{i}\left[ \dfrac {y_{i}\left( w^{T}\phi \left( x\right) +b\right) }{\left| w\right| }\right] \right} $$</p>
+<p>对于目标函数，即公式1，我们总可以认为$$\min <em>{i}y</em>{i}\left( w^{T}\phi \left( x\right) +b\right) =1$$因此目标问题转化为：<br>                    求$w$和$b$,目标函数为    $$ \max <em>{w,b}\dfrac {1}{\left| w\right| }$$进行整理，最终成为如下约束最优化问题$$\min </em>{w,b}\dfrac {1}{2}\left| w\right| ^{2}$$ $$s.t.  \quad y<em>{i}\left( w^{T}\phi \left( x\right) +b\right) \geq1$$<br>对线性可分支持向量机而言，有$\phi \left( x</em>{i}\right) =x<em>{i}$<br>以下要用到约束最优化求解的知识。<br>根据拉格朗日乘子法，可写出该规划问题的拉格朗日表达式：$$L\left( w,b,\alpha \right) =\dfrac {1}{2}\left| w\right| ^{2}-\sum ^{n}</em>{i=1}\alpha <em>{i}\left( y</em>{i}\left( w^{T}\phi \left( x<em>{i}\right) +b\right) -1\right) $$,其中$$a</em>{i}\geq0$$<br>因此有<br>1、原问题：求$$\min <em>{w,b}\dfrac {1}{2}\left| w\right| ^{2}$$ （$s.t.  \quad y</em>{i}\left( w^{T}\phi \left( x\right) +b\right) \geq1$）<br>2、转化为求$$\min <em>{w,b}\max </em>{\alpha }L\left( \omega ,b,\alpha \right) $$<br>3、根据拉格朗日对偶性，极小极大问题可以转化为极大极小问题。即转化为求公式2$$\max <em>{\alpha }\min </em>{W,b}L\left( \omega ,b,\alpha \right)$$</p>
+<p>我们进行了一个如下过程的转换。（本文中$W$和$w$和$\omega$都表示一个东西，手写软件不太给力）<br>$$\min <em>{W,b}\dfrac {1}{2}\left| w\right| ^{2}\rightarrow \min </em>{w,b}\max <em>{\alpha }L\left( \omega ,b,\alpha \right) \rightarrow \max </em>{\alpha }\min _{W,b}L\left( \omega ,b,\alpha \right) $$</p>
+<p>我们根据$L\left( \omega ,b,\alpha \right)$写出方程式$\dfrac {\partial L}{\partial \omega }=0$和$\dfrac {\partial L}{\partial b }=0$,可求出$\omega$和$b$关于$\alpha$的表达式，回代到公式2，可以整理成为如下约束规划问题。$$\min <em>{\alpha }\dfrac {1}{2}\sum ^{n}</em>{i=1}\sum ^{n}<em>{j=1}\alpha </em>{i}\alpha <em>{j}y</em>{i}y<em>{j}\left( \phi \left( x</em>{i}\right) \phi \left( x<em>{j}\right) \right) -\sum ^{n}</em>{i=1}\alpha <em>{i}$$<br>$$S.t.\sum ^{n}</em>{i=1}\alpha <em>{i}y</em>{i}=0,\quad a_{i}\geq0$$<br>求出最优的$\alpha$，就可以求出$\omega$和$b$</p>
+<p>##3、线性支持向量机<br>对于不能被严格分开的正负样本点，我们只能期望找到一个分离超平面，尽可能地把它分开。如下图<br><img src="http://img3.imgtn.bdimg.com/it/u=1204778392,1987158221&amp;fm=26&amp;gp=0.jpg" alt="这里写图片描述"><br>可见，有些点是分错的，但我们允许这种错误。这种模型就是线性支持向量机，也称为软间隔支持向量机。仿照硬间隔支持向量机的格式，我们同样可以整理得到约束最优化问题如下：$$\min <em>{w,b,\xi}\dfrac {1}{2}\left| w\right| ^{2}+C\sum ^{n}</em>{i=1}\xi $$ $$s.t.  \quad y<em>{i}\left( w^{T}\phi \left( x\right) +b\right) \geq1-\xi</em>{i}\quad\xi<em>{i}\geq0$$<br>同理可整理出来拉格朗日形式的约束最优化问题如下：$$\min </em>{\alpha }\dfrac {1}{2}\sum ^{n}<em>{i=1}\sum ^{n}</em>{j=1}\alpha <em>{i}\alpha </em>{j}y<em>{i}y</em>{j}\left( \phi \left( x<em>{i}\right) \phi \left( x</em>{j}\right) \right) -\sum ^{n}<em>{i=1}\alpha </em>{i}$$<br>$$S.t.\sum ^{n}<em>{i=1}\alpha </em>{i}y<em>{i}=0,\quad0\leq a</em>{i}\leq C$$<br>对线性支持向量机而言，有$\phi \left( x<em>{i}\right) =x</em>{i}$</p>
+<p>###两个小tips</p>
+<p>####1、这个C的调参数：<br>a.调小   过渡带变宽，可以防止过拟合<br>b.调大   过渡带变窄，可以提高精度</p>
+<p>####2、损失函数<br>对于分错的点，有一个损失$\xi$(见上图),对于支持向量机来说，其损失函数为$$\xi=\xi<em>{1}+\xi</em>{2}+…+\xi_{n}$$该损失函数又称为“合页损失函数”。</p>
+<p>##4、核支持向量机<br>以上两种模型的优化函数中，都有$\phi \left( x<em>{i}\right) =x</em>{I}$，在核支持向量机中，有所不同。核支持向量机有不同的核，常用的是高斯核。核支持向量机和线性支持向量机的关系如下图：<br><img src="http://img.blog.csdn.net/20170725220238302?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>在高斯核中，有<br>$$\phi \left( x<em>{i}\right) \phi \left( x</em>{j}\right) =exp\left( -\dfrac {\left| x<em>{i}-x</em>{j}\right| ^{2}}{2\sigma ^{2}}\right) $$</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（二）逻辑斯蒂回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:/2017/07/26/机器学习算法（三）支持向量机/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（六）词向量/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（五）深度学习/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2017/07/26/机器学习算法（四）决策树/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/26/机器学习算法（一）线性回归/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（四）统计机器翻译SMT/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（三）主题模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（二）语言模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（一）基础/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（九）EM和贝叶斯网络的结合  HMM模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（八）贝叶斯算法族、朴素贝叶斯/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（七）EM算法族  EM、GMM/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（六）K-Means聚类、层次聚类、密度聚类、谱聚类/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（五）集成/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（四）决策树/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（三）支持向量机/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（一）线性回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （一）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T10:06:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （二）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路（序）———谈谈入坑和入坑后的感想/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -561,8 +332,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

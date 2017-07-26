@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="">
-  <title>Archives: 2017/7 | 谦芊珺的博客</title>
+  <title>谦芊珺的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="机器学习  人工智能">
+  <meta name="description" content="目的：把文本用数据的形式表达出来方法：传统基于规则，现代基于统计 ###一、词编码方式1——离散表示1、One-hot编码      和句子中顺序无关，耗空间耗时 2、词袋模型每个数表示该词出现的次数（One-hot的加和） 3、TF_IDF每个数代表该词在整个文档中的占比 4、N-gram相邻N个词作为一组进行编码，缺点是浪费空间、无法衡量词之间的关系 ###二、词编码方式2——分布式表示 所谓">
 <meta name="keywords" content="机器学习，人工智能">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="谦芊珺的博客">
-<meta property="og:url" content="/archives/2017/07/index.html">
+<meta property="og:url" content="/2017/07/26/自然语言处理（六）词向量/index.html">
 <meta property="og:site_name" content="谦芊珺的博客">
-<meta property="og:description" content="机器学习  人工智能">
+<meta property="og:description" content="目的：把文本用数据的形式表达出来方法：传统基于规则，现代基于统计 ###一、词编码方式1——离散表示1、One-hot编码      和句子中顺序无关，耗空间耗时 2、词袋模型每个数表示该词出现的次数（One-hot的加和） 3、TF_IDF每个数代表该词在整个文档中的占比 4、N-gram相邻N个词作为一组进行编码，缺点是浪费空间、无法衡量词之间的关系 ###二、词编码方式2——分布式表示 所谓">
+<meta property="og:image" content="http://img.blog.csdn.net/20170726203735988?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170726203825157?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-07-26T15:02:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谦芊珺的博客">
-<meta name="twitter:description" content="机器学习  人工智能">
+<meta name="twitter:description" content="目的：把文本用数据的形式表达出来方法：传统基于规则，现代基于统计 ###一、词编码方式1——离散表示1、One-hot编码      和句子中顺序无关，耗空间耗时 2、词袋模型每个数表示该词出现的次数（One-hot的加和） 3、TF_IDF每个数代表该词在整个文档中的占比 4、N-gram相邻N个词作为一组进行编码，缺点是浪费空间、无法衡量词之间的关系 ###二、词编码方式2——分布式表示 所谓">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170726203735988?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="谦芊珺的博客" type="application/atom+xml">
   
@@ -145,400 +149,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-自然语言处理（六）词向量" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目的：把文本用数据的形式表达出来<br>方法：传统基于规则，现代基于统计</p>
+<p>###一、词编码方式1——离散表示<br>1、One-hot编码<br>      和句子中顺序无关，耗空间耗时</p>
+<p>2、词袋模型<br>每个数表示该词出现的次数（One-hot的加和）</p>
+<p>3、TF_IDF<br>每个数代表该词在整个文档中的占比</p>
+<p>4、N-gram<br>相邻N个词作为一组进行编码，缺点是浪费空间、无法衡量词之间的关系</p>
+<p>###二、词编码方式2——分布式表示</p>
+<p>所谓分布式表示，就是将“红色小型汽车”变成“红色+小型+汽车”</p>
+<p>于是产生了现代统计自然语言处理中最有创见的想法之一：用一个词附近的其他词来表示该词。</p>
+<p>一开始用“共现矩阵”表示，后来发现它有耗空间过大、稀疏等问题，因此需要找到方法<strong>构造低维稠密向量作为词的分布式表示 (25~1000维)!</strong></p>
+<p>一开始有用SVD分解的方法，后来发现它与其他深度学习模型框架差异大</p>
+<p>又有了NNLM方法如下图所示：（七月算法自然语言处理课程PPT）<br><img src="http://img.blog.csdn.net/20170726203735988?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170726203825157?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>这个模型复杂度较高。于是有了现在最常用的word2vec模型。</p>
+<p>###三、Work2Vec</p>
+<p>####1、CBOW<br>待续</p>
+<p>####2、Skip-Gram<br>待续</p>
+<p>当语料特别大时，多用Skip-Gram</p>
+<p>-》Word2Vec对多义词表示的并不好，因此有了改进版本GloVe，但用的不多。</p>
+<p>-》还有sense2vec模型，它是将词性和word2vec结合的技术。</p>
+<p>-》seq2seq    待续</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（二）逻辑斯蒂回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:/2017/07/26/自然语言处理（六）词向量/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（六）词向量/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（五）深度学习/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2017/07/26/机器学习算法（二）逻辑斯蒂回归/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/26/自然语言处理（五）深度学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（四）统计机器翻译SMT/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（三）主题模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（二）语言模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（一）基础/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（九）EM和贝叶斯网络的结合  HMM模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（八）贝叶斯算法族、朴素贝叶斯/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（七）EM算法族  EM、GMM/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（六）K-Means聚类、层次聚类、密度聚类、谱聚类/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（五）集成/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（四）决策树/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（三）支持向量机/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（一）线性回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （一）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T10:06:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （二）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路（序）———谈谈入坑和入坑后的感想/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -561,8 +332,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

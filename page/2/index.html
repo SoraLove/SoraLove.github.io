@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="">
-  <title>Archives: 2017/7 | 谦芊珺的博客</title>
+  <title>谦芊珺的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="机器学习  人工智能">
 <meta name="keywords" content="机器学习，人工智能">
 <meta property="og:type" content="website">
 <meta property="og:title" content="谦芊珺的博客">
-<meta property="og:url" content="/archives/2017/07/index.html">
+<meta property="og:url" content="/page/2/index.html">
 <meta property="og:site_name" content="谦芊珺的博客">
 <meta property="og:description" content="机器学习  人工智能">
 <meta name="twitter:card" content="summary">
@@ -147,398 +147,482 @@
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-机器学习算法（八）贝叶斯算法族、朴素贝叶斯" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##一、贝叶斯网络<br>本文介绍贝叶斯网络。贝叶斯网络与前面的大多数算法有一些区别，它归属与贝叶斯学派，属于判别式模型。前面介绍大多数算法归属于频率学派，属于生成式模型。</p>
+<p>贝叶斯网络可以看成是一个DAG(有向无环图)模型</p>
+<p>贝叶斯网络的三个知识点<br>1、网络如图所示：$$A\leftarrow C\rightarrow B$$则在C给定的条件下，A与B独立。</p>
+<p>2、网络如图所示：$$A\rightarrow C\rightarrow B$$C给定的条件下，A与B独立</p>
+<p>3、网络如图所示：$$A\rightarrow C\leftarrow B$$C未知的条件下，A与B独立</p>
+<p>##二、朴素贝叶斯<br>前提：假设各特征相互独立（条件独立），且重要性相同</p>
+<p>一个样本点属于某一类的概率是<br>$$P(y|x<em>{1},…,x</em>{n})=\dfrac{P(y)P(x<em>{1},…,x</em>{n}|y)}{P(x<em>{1},…,x</em>{n})}=\dfrac{P(y)\prod^{n}<em>{i=1}P(x</em>{i}|y)}{P(x<em>{1},…,x</em>{n})}<br>$$<br>在朴素贝叶斯中，判别一个样本点属于那个类别的公式为<br>$$y=argmax<em>{y}P(y)\prod^{n}</em>{i=1}P(x_{i}|y)<br>$$</p>
+<p>其中，这个$P(x_{i}|y)$当是离散时是多项式分布，是连续时是高斯分布。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（二）逻辑斯蒂回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（八）贝叶斯算法族、朴素贝叶斯/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（六）词向量/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习算法（七）EM算法族  EM、GMM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#一、GMM算法<br>EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。</p>
+<p>##1、GMM算法问题描述<br>GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。</p>
+<p>假设有n个样本点$x<em>{1},x</em>{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数：</p>
+<p>1、不同高斯分布的数据占比：$\pi<em>{i}$<br>2、每个高斯分布的均值与方差：$\pi</em>{i}~N(\mu<em>{i},\sigma</em>{i}^2)$</p>
+<p>我们的目的是求出每个$\pi<em>{i}$，$\mu</em>{i}$，$\sigma_{i}$</p>
+<p>因此我们的目标即是求合适的$\pi<em>{i}$，$\mu</em>{i}$，$\sigma_{i}$来最大化对数似然函数。</p>
+<p>$$l<em>{\pi,\mu\sigma}(x)=\sum^{N}</em>{i=1}log[\sum^{K}<em>{k=1}\pi</em>{k}N(x<em>{I}|\mu</em>{k},\sigma_{k})]$$<br>这个目标函数中既有对数又有加和，因此不能直接求导因此我们采用迭代的方法。</p>
+<p>##2、GMM迭代方法描述<br>Step1:对于每一个样本点i，计算它由不同组分(第k个组分)生成的概率$$r(i,k)=\dfrac{\pi<em>{k}N(x</em>{i}|\mu<em>{k},\sigma</em>{k})}{\sum^{K}<em>{j=1}\pi</em>{j}N(x<em>{i}|\mu</em>{j},\sigma<em>{j})}$$<br>Step2:由各个样本点的$r(i,k)$更新参数$\pi</em>{i}$，$\mu<em>{i}$，$\sigma</em>{I}$</p>
+<p>Step3:回到Step1，迭代更新</p>
+<p>这其实就是EM算法的E步和M步的过程。</p>
+<p>下面给出通用的EM算法伪代码。</p>
+<p>##3、EM算法</p>
+<p><python><br>Repeat util 收敛{<br>    (E步)：对每个样本$x<em>{i}$,计算$$Q</em>{i}(z^{i})=P(z^{i}|x^{i};\theta)$$<br>    (M步)：对每个参数$\theta$，有$$\theta:=argmax<em>{\theta }l\left( \theta \right) =argmax</em>{\theta}\sum^{}<em>{i}\sum^{}</em>{z^{i}}Q<em>{i}(z^{i})log\dfrac{P(x</em>{i};z<em>{i};\theta)}{Q</em>{i}(z_{i})}$$<br>}</python></p>
+<python>
+
+<p>其中，E步的那个$Q$就是第i个样本的分布，就是那个$r(i,k)$<br>这个形式可以推导可得，其实是等价的</p>
+<p>M步中，那个公式就是对数似然函数，求使它最大化的参数</p>
+<p>总结：EM算法说到底是一个迭代更新的过程。它首先对各个样本计算分布，然后更新参数；再计算分布，再更新参数……</p>
+</python>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（七）EM算法族  EM、GMM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（五）深度学习/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习算法（六）K-Means聚类、层次聚类、密度聚类、谱聚类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文主要简述聚类算法族。聚类算法与前面文章的算法不同，它们属于非监督学习。</p>
+<p>##1、K-means聚类</p>
+<p>记k个簇中心，为$\mu<em>{1}$,$\mu</em>{2}$,…,$\mu<em>{k}$,每个簇的样本数为$N</em>{i}$<br>假设每个簇中的数据都满足分布$N(\mu<em>{i},\sigma)$，即方差相同，均值不同的GMM。<br>则每一个样本点的分布函数为：$$\phi</em>{i}=\dfrac{1}{\sqrt{2\pi\sigma^2}}exp(-\dfrac{({x<em>{i}-\mu})^2}{2\sigma^2})$$<br>可求出其似然函数<br>$$L</em>{\mu}=\phi<em>{1}\times\phi</em>{2}\times…$$<br>且可求其对数似然为(以三个点为例)<br>$$l<em>{\mu}=\dfrac{1}{2}\sum^{k}</em>{j=1}\sum^{i=1}<em>{N</em>{j}}(x<em>{I}-\mu</em>{j})^2$$<br>求驻点有：$$\mu<em>{j}=\dfrac{1}{N</em>{j}}\sum^{N}<em>{i=1}x</em>{i}$$<br>因此，以均方误差为目标函数的时候肯定是收敛的。用其他函数作为目标函数不一定收敛。</p>
+<p>注：$k$的选择采用“手肘法”，注意不是交叉验证，它连标签都没有！</p>
+<p>##2、密度聚类<br>代表算法：DBSCAN</p>
+<p>K-means对噪声敏感，密度聚类对噪声不敏感。</p>
+<p>##3、层次聚类</p>
+<p>按层次聚类，由上至下或由下至上，优点是可以任意选择聚类数</p>
+<p>##4、谱聚类<br>Step1:对样本点俩俩计算相似度$S<em>{ij}$,组成相似度矩阵，又称权值矩阵$$W</em>{n\times n}=[S_{ij}]$$</p>
+<p>Step2:将$W<em>{n\times n}$的主对角线元素全部置为0，把每行元素的值相加，第$i$行的和为$d</em>{i}$。将$d<em>{i}$作为主对角线元素组成$D</em>{n\times n}$</p>
+<p>Step3:令$$L<em>{n\times n}=D</em>{n\times n}-W_{n\times n}$$，称为拉普拉斯矩<br>阵。这个$L$是半正定的，它最小的特征值为0。</p>
+<p>Step4:求L矩阵的特征值和特征向量，将所有特征值从小大排列，取出前k个（聚类数为k），将其对应的特征向量如下排列：$$[u<em>{1},u{2},…,u</em>{k}]$$该矩阵的第一行即为第一个样本点转换后的特征，第二行为第二个样本点转换后的特征。将这些特征扔入K_means，其聚类结果即是谱聚类结果。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（六）K-Means聚类、层次聚类、密度聚类、谱聚类/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（四）统计机器翻译SMT/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习算法（五）集成" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##1、集成<br>集成指用多个基学习器共同构成一个更加强大的学习器。<br>集成包含三种方法：Boosting，Bagging，Stacking<br>1、Boosting:包括GBDT和Adaboost，各学习器间存在强依赖关系，只能串行实现<br>2、Bagging的代表算法是随机森林，各学习器间不存在强依赖关系，可以并行实现<br>3、Stacking主要是分层结构。每个初级学习器负责一部分的领域知识并构成次级学习器。</p>
+<p>##2、Boosting<br>1、GBDT：梯度提升决策树<br>原理简介如下图所示：</p>
+<p><img src="http://img4.imgtn.bdimg.com/it/u=3712422443,1460991273&amp;fm=214&amp;gp=0.jpg" alt="这里写图片描述"></p>
+<p>它的基本思想是：迭代第m次的基函数是根据上一颗树的伪残差训练出来的。</p>
+<p>2、Adaboost<br>输入：训练数据集$D={(x<em>{1},y</em>{1}),(x<em>{2},y</em>{2}),…,(x<em>{N},y</em>{N})}$<br>初始化：为每条数据赋一个权重，通常$D<em>{w}={w</em>{11},w<em>{12},…,w</em>{1N}}$,其中，1表示第1次迭代。<br>步骤：<br>Step1:找到一个二分类器$G<em>{m}(x)$,使下式的这个损失最小：<br>$$e</em>{m}=\sum^{N}<em>{i=1}w</em>{mi}I(G<em>{m}(x</em>{I})\neq y<em>{i})$$<br>Step2:计算$$a</em>{m}=\dfrac{1}{2}log\dfrac{1-e<em>{m}}{e</em>{m}}$$<br>Step3:更新权值$$w<em>{m+1,i}=\dfrac{w</em>{mi}}{z<em>{m}}exp(-\alpha</em>{m}y<em>{i}G</em>{m}(x<em>{i}))$$其中，$z</em>{m}$为一归一化因子<br>Step4:  $m=m+1$,并返回Step1进行迭代。</p>
+<p>最终求得的分类函数为$$f(x)=\sum^{N}<em>{m=1}\alpha</em>{m}G_{m}(x)$$</p>
+<p>##3、Bagging<br>比较有代表性的Bagging算法就是随机森林，它就是随机采一些样本，随机采一些属性生成多棵决策树进行共同决策。</p>
+<p>Bagging可以减少方差<br>Boosting可以减少偏差</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（五）集成/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（三）主题模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习算法（四）决策树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##一、信息熵<br>首先给出信息熵的定义如下$$H\left( x\right) =-\sum _{x\in \chi }p\left( x\right) \ln p\left( x\right) $$<br>1、无约束条件时，均匀分布熵最大<br>2、若给定分布的期望和方差，则正态分布的熵最大</p>
+<p>##二、决策树是什么<br>决策树就是下图所示的东西<br><img src="http://img2.imgtn.bdimg.com/it/u=4103559169,1805348068&amp;fm=214&amp;gp=0.jpg" alt="这里写图片描述"></p>
+<p>##三、决策树</p>
+<p>###1、几个名词：<br>1、训练数据集：D<br>2、数据的标签有K种，即有K个类，记为$C<em>{k}$<br>3、数据有多个特征，其中有某一个特征叫A，这个A特征有n个取值，记所有A特征取值为i的数据的集合为$D</em>{i}$<br>4、在子集$D<em>{i}$中属于第k个类的样本集合记为$D</em>{ik}$<br>定义如下两个量：<br>                                     $$H\left( D\right) =\sum ^{K}<em>{k=1}\dfrac {\left| C</em>{k}\right| }{\left| D\right| }\log\dfrac {\left| C<em>{k}\right| }{\left| D\right| }$$<br>                                    $$H\left( D| A\right) =-\sum ^{n}</em>{i=1}\dfrac {\left| Di\right| }{\left| D\right| }\sum ^{K}<em>{k=1}\dfrac {\left| D</em>{ik}\right| }{\left| D<em>{i}\right| }log\dfrac {\left| D</em>{ik}\right| }{\left| D_{i}\right|}$$</p>
+<p>###2、评估指标<br>根据以上定义的量，定义如下几个评估指标：<br>1、信息增益：$g(D,A)=H(D)-H(D|A)$<br>2、信息增益率：$g<em>{r}(D,A)=g(D,A)/H(A)$<br>3、基尼系数：$Gini(p)=1-\sum ^{K}</em>{k=1}(\dfrac {\left| C_{k}\right| }{\left| D\right| })^{2}$</p>
+<p>###3、决策树算法<br>常用决策树算法包括ID3算法、C4.5算法，CART决策树，它们最重要的不同在于评估指标不同，其中，ID3采用信息增益作为评估指标，C4.5采用信息增益率作为评估指标，CART决策树采用基尼系数作为评估指标。</p>
+<p>我们以ID3为例，它首先扫描所有特征，找出信息增益最大的特征作为其根节点，在对其各个子节点递归地进行这个过程，直至达到某个收敛条件。</p>
+<p>###4、决策树的目标函数<br>决策树的目标函数，或者说决策树的损失函数为：<br>$C(T)=\sum<em>{t\in leaf}N</em>{t}\times H(t)$<br>其中，$N_{t}$代表某一叶结点中包含的样本数；$H(t)$代表该叶结点中的熵</p>
+<p>对该目标函数进行正则化后的目标函数为：$C_{\alpha}(T)=C(T)+\alpha\times|leafs|$,即加上叶节点个数的信息。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（四）决策树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（二）语言模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习算法（三）支持向量机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##1、问题介绍<br>本文只涉及二分类支持向量机。</p>
+<p>支持向量机问题可以分为三种情况来讨论：<br>1、硬间隔支持向量机：用于可以被一个超平面严格分开的问题中，又称为线性可分支持向量机<br>2、软间隔支持向量机：用于可以被一个超平面非严格分开的问题中，又称线性支持向量机<br>3、核支持向量机：用于可以被一个超曲面分开的问题中，又称非线性支持向量机</p>
+<p>本文主要介绍硬间隔支持向量机。</p>
+<p>所谓“可以被一个超平面严格分开”，以三维空间数据为例，就是如下图情况：</p>
+<p><img src="http://img0.imgtn.bdimg.com/it/u=1118118044,1096699419&amp;fm=214&amp;gp=0.jpg" alt="这里写图片描述"></p>
+<p>即可以找到一个分离超平面，将正负数据点分开。</p>
+<p>假设我们有数据D={(x1,y1),(x2,y2),…,(xn,yn)},则x代表空间中的数据点，y代表该点的标签，它有两个取值，+1和-1。</p>
+<p>我们要做的事就是找到一个如下分离超平面$$y\left( x\right) =\omega ^{T}\phi \left( x\right) +b$$这个分离超平面有如下两个特点：<br>1、它可以将所有的正负例点分开<br>2、在满足1的基础上，令所有点中，距离它距离最小的点的距离最大。</p>
+<p>简单概括，就是找到一个分离超平面，使点到面的“最小距离最大化”。</p>
+<p>我们的目标就是找到这个超平面的$\omega$和$b$。</p>
+<p>##2、目标函数分析<br>根据“最小距离最大化的”目标函数思想，可以写出支持向量机的目标函数如下式1：$$\max \left{ \min <em>{i}\left[ \dfrac {y</em>{i}\left( w^{T}\phi \left( x\right) +b\right) }{\left| w\right| }\right] \right} $$我们想要求的参数$w$与$b$可表述如下：$$<br>w,b=argmax<em>{w,b} \left{ \min </em>{i}\left[ \dfrac {y_{i}\left( w^{T}\phi \left( x\right) +b\right) }{\left| w\right| }\right] \right} $$</p>
+<p>对于目标函数，即公式1，我们总可以认为$$\min <em>{i}y</em>{i}\left( w^{T}\phi \left( x\right) +b\right) =1$$因此目标问题转化为：<br>                    求$w$和$b$,目标函数为    $$ \max <em>{w,b}\dfrac {1}{\left| w\right| }$$进行整理，最终成为如下约束最优化问题$$\min </em>{w,b}\dfrac {1}{2}\left| w\right| ^{2}$$ $$s.t.  \quad y<em>{i}\left( w^{T}\phi \left( x\right) +b\right) \geq1$$<br>对线性可分支持向量机而言，有$\phi \left( x</em>{i}\right) =x<em>{i}$<br>以下要用到约束最优化求解的知识。<br>根据拉格朗日乘子法，可写出该规划问题的拉格朗日表达式：$$L\left( w,b,\alpha \right) =\dfrac {1}{2}\left| w\right| ^{2}-\sum ^{n}</em>{i=1}\alpha <em>{i}\left( y</em>{i}\left( w^{T}\phi \left( x<em>{i}\right) +b\right) -1\right) $$,其中$$a</em>{i}\geq0$$<br>因此有<br>1、原问题：求$$\min <em>{w,b}\dfrac {1}{2}\left| w\right| ^{2}$$ （$s.t.  \quad y</em>{i}\left( w^{T}\phi \left( x\right) +b\right) \geq1$）<br>2、转化为求$$\min <em>{w,b}\max </em>{\alpha }L\left( \omega ,b,\alpha \right) $$<br>3、根据拉格朗日对偶性，极小极大问题可以转化为极大极小问题。即转化为求公式2$$\max <em>{\alpha }\min </em>{W,b}L\left( \omega ,b,\alpha \right)$$</p>
+<p>我们进行了一个如下过程的转换。（本文中$W$和$w$和$\omega$都表示一个东西，手写软件不太给力）<br>$$\min <em>{W,b}\dfrac {1}{2}\left| w\right| ^{2}\rightarrow \min </em>{w,b}\max <em>{\alpha }L\left( \omega ,b,\alpha \right) \rightarrow \max </em>{\alpha }\min _{W,b}L\left( \omega ,b,\alpha \right) $$</p>
+<p>我们根据$L\left( \omega ,b,\alpha \right)$写出方程式$\dfrac {\partial L}{\partial \omega }=0$和$\dfrac {\partial L}{\partial b }=0$,可求出$\omega$和$b$关于$\alpha$的表达式，回代到公式2，可以整理成为如下约束规划问题。$$\min <em>{\alpha }\dfrac {1}{2}\sum ^{n}</em>{i=1}\sum ^{n}<em>{j=1}\alpha </em>{i}\alpha <em>{j}y</em>{i}y<em>{j}\left( \phi \left( x</em>{i}\right) \phi \left( x<em>{j}\right) \right) -\sum ^{n}</em>{i=1}\alpha <em>{i}$$<br>$$S.t.\sum ^{n}</em>{i=1}\alpha <em>{i}y</em>{i}=0,\quad a_{i}\geq0$$<br>求出最优的$\alpha$，就可以求出$\omega$和$b$</p>
+<p>##3、线性支持向量机<br>对于不能被严格分开的正负样本点，我们只能期望找到一个分离超平面，尽可能地把它分开。如下图<br><img src="http://img3.imgtn.bdimg.com/it/u=1204778392,1987158221&amp;fm=26&amp;gp=0.jpg" alt="这里写图片描述"><br>可见，有些点是分错的，但我们允许这种错误。这种模型就是线性支持向量机，也称为软间隔支持向量机。仿照硬间隔支持向量机的格式，我们同样可以整理得到约束最优化问题如下：$$\min <em>{w,b,\xi}\dfrac {1}{2}\left| w\right| ^{2}+C\sum ^{n}</em>{i=1}\xi $$ $$s.t.  \quad y<em>{i}\left( w^{T}\phi \left( x\right) +b\right) \geq1-\xi</em>{i}\quad\xi<em>{i}\geq0$$<br>同理可整理出来拉格朗日形式的约束最优化问题如下：$$\min </em>{\alpha }\dfrac {1}{2}\sum ^{n}<em>{i=1}\sum ^{n}</em>{j=1}\alpha <em>{i}\alpha </em>{j}y<em>{i}y</em>{j}\left( \phi \left( x<em>{i}\right) \phi \left( x</em>{j}\right) \right) -\sum ^{n}<em>{i=1}\alpha </em>{i}$$<br>$$S.t.\sum ^{n}<em>{i=1}\alpha </em>{i}y<em>{i}=0,\quad0\leq a</em>{i}\leq C$$<br>对线性支持向量机而言，有$\phi \left( x<em>{i}\right) =x</em>{i}$</p>
+<p>###两个小tips</p>
+<p>####1、这个C的调参数：<br>a.调小   过渡带变宽，可以防止过拟合<br>b.调大   过渡带变窄，可以提高精度</p>
+<p>####2、损失函数<br>对于分错的点，有一个损失$\xi$(见上图),对于支持向量机来说，其损失函数为$$\xi=\xi<em>{1}+\xi</em>{2}+…+\xi_{n}$$该损失函数又称为“合页损失函数”。</p>
+<p>##4、核支持向量机<br>以上两种模型的优化函数中，都有$\phi \left( x<em>{i}\right) =x</em>{I}$，在核支持向量机中，有所不同。核支持向量机有不同的核，常用的是高斯核。核支持向量机和线性支持向量机的关系如下图：<br><img src="http://img.blog.csdn.net/20170725220238302?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9sYW5kYTcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>在高斯核中，有<br>$$\phi \left( x<em>{i}\right) \phi \left( x</em>{j}\right) =exp\left( -\dfrac {\left| x<em>{i}-x</em>{j}\right| ^{2}}{2\sigma ^{2}}\right) $$</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（三）支持向量机/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（一）基础/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习算法（一）线性回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#机器学习算法（一）线性回归<br>本文主要梳理一下线性回归和逻辑斯蒂回归这两大算法。这两个算法的关系是什么呢？答案是并没有什么关系。<br>这样说其实也不对，逻辑斯蒂回归里有线性回归的重要组成部分。但是二者又一个本质区别，就是线性回归是一个“回归”算法，而逻辑斯蒂回归是一个“分类”算法。这就导致两个算法永远像牛郎织女一样隔着银河。本文主要介绍线性回归，下篇文章会在本文的基础上介绍逻辑斯蒂回归。本文思路主要来自邹博的机器学习课程。<strong>本文为作者自己学习整理的笔记，转载请注明出处。</strong></p>
+<p>##线性回归</p>
+<p>###1、输入描述：<br>有训练数据集D，其中共有m条数据，n个特征，如下表所示。<br>| 数据id |   数学 | 语文  |英语|物理|<br>| :—-: | :—–:| :–: | :–: |:–:|<br>| 学生1 | 98 |   92 | 96 | 83 |<br>| 学生2 | 95 |  79  |86|23|<br>| …  |  34| 35 |92|92|<br>|学生m | 67|68|94|72|</p>
+<p>上表是一个数据表的简单示例，其中包含m条数据，每条数据代表了一名学生；4个特征，分别是数学成绩、语文成绩、英语成绩、物理成绩。</p>
+<p>以上是一个具体的表格，我们可以抽象表格如下：<br>| 数据id |   属性1 | 属性2  |…|属性n|预测值<br>| :—-: | :—–:| :–: | :–: |:–:|:–:|<br>| 1 | x11 |   x12 |… | x1n |y1<br>| 2 | x21 |  x22  |…|x2n|y2<br>| …  |  …| … |…|…|…<br>|m | xm1|xm2|…|xmn|ym</p>
+<p>对于其中的某一条数据，可以认为如下：<br>|   属性1 | 属性2  |…|属性n|预测值<br>| :—-: | :—–:| :–: | :–: |:–:|:–:|<br>| x1 |   x2 |… | xn |y</p>
+<p>###2、问题描述<br>线性回归就是要解决以下问题：</p>
+<p>要建立一如下公式1：<br>    $$y=h<em>{\theta }\left( x\right) =\theta </em>{0}+\theta <em>{1}x</em>{1}+\theta <em>{2}x</em>{2}+\ldots +\theta <em>{n}x</em>{n}$$<br>    我们的目标就是在已知一些数据后，求出该方程的系数，即$\theta <em>{0}$,$\theta </em>{1}$,…,$\theta _{n}$.</p>
+<p>###3、算法推导<br>上面公式1可做如下变形（公式2）<br>$$\widehat{y}=h<em>{\theta }\left( x\right) =\sum ^{n}</em>{i=1}\theta <em>{i}x</em>{i}=\theta ^{T}x$$</p>
+<p>对于数据标签的真实值，我们可以设为$y$,而对于数据用公式1和所有$x$计算得到的值为估计值，设为$\widehat{y}$.</p>
+<p>因此有公式3$$y=\widehat {y}+\varepsilon $$</p>
+<p>其中，这个$\varepsilon$可以认为是噪声。</p>
+<p>根据中心极限定理，我们可以认为这个$\varepsilon$服从正态分布，即$$\varepsilon \sim N\left( 0,\sigma ^{2}\right) $$<br>因此，有公式4$$P\left( \varepsilon \right) =\dfrac {1}{\sqrt {2\pi \sigma }}exp\left( -\dfrac {\varepsilon ^{2}}{2\sigma ^{2}}\right) $$<br>因为$$\varepsilon=y-\widehat {y}$$<br>带入公式4，将$\varepsilon$和$x$视为常数，则可将$P\left( \varepsilon \right)$看成是关于$\theta$的函数。即$P\left( \varepsilon \right) =g\left( \theta \right) $<br>根据最大似然定理，可得关于$\theta$的似然函数为公式5$$L\left( \theta \right) =\prod ^{m}<em>{i=1}\dfrac {1}{\sqrt {2\pi }\sigma }exp\left( -\dfrac {\left( y^{i}-\theta ^{T}x^{i}\right) ^{2}}{2\sigma ^{2}}\right) $$<br>其中，$i$表示第$i$条数据。该式中，仅$\theta$为未知量，我们要做的事就是求出一组$\theta$，使$L\left( \theta \right)$最大。<br>对于公式5，可以对其取$log$求出其对数似然函数。对其对数似然函数可以进一步化简，最终，我们可得到如下的目标函数（公式6）：求出一组$\theta$使$$J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}</em>{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}$$最小。<br>此处略去求解过程，该式的解决方式是令$J\left( \theta \right)$对$\theta$求导并令其等于0。最后可求得公式7:$$\theta =\left( x^{T}x\right) ^{-1}x^{T}y$$<br>当以公式6为目标函数时，并没有考虑过拟合的问题。若想减少过拟合风险，可以对该目标函数加入正则项，常用的方法有以下两种：<br>1、L1正则（又称LASSO回归）<br>      其目标函数是公式8:<br>      $$J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}<em>{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}+\lambda \sum ^{n}</em>{j=1}\left| \theta _{j}\right| $$</p>
+<p>2、L2正则（又称岭回归）<br>其目标函数是公式9:<br>      $$J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}<em>{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}+\lambda \sum ^{n}</em>{j=1}\theta ^{2}_{j}$$</p>
+<p>实际上，一般用公式7直接求出$\theta$是很难的。一般我们会采用梯度下降的方法来求出一个局部最优的$\theta$。</p>
+<p>综上，线性回归的目标函数为：公式6、公式8或公式9。即<br>$$loss=J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}<em>{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}$$或$$loss=J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}</em>{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}+\lambda \sum ^{n}<em>{j=1}\left| \theta </em>{j}\right| $$或$$loss=J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}<em>{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}+\lambda \sum ^{n}</em>{j=1}\theta ^{2}_{j}$$</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/26/机器学习算法（一）线性回归/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（九）EM和贝叶斯网络的结合  HMM模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习小白之路 （一）机器学习各项相关宏观知识综述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="机器学习小白之路-（一）机器学习各项相关宏观知识综述"><a href="#机器学习小白之路-（一）机器学习各项相关宏观知识综述" class="headerlink" title="机器学习小白之路 （一）机器学习各项相关宏观知识综述"></a>机器学习小白之路 （一）机器学习各项相关宏观知识综述</h1><h2 id="大数据、人工智能、机器学习、数据挖掘、神经网络、深度学习等名词的释义及辨析"><a href="#大数据、人工智能、机器学习、数据挖掘、神经网络、深度学习等名词的释义及辨析" class="headerlink" title="大数据、人工智能、机器学习、数据挖掘、神经网络、深度学习等名词的释义及辨析"></a>大数据、人工智能、机器学习、数据挖掘、神经网络、深度学习等名词的释义及辨析</h2><p>在本文中，我主要分享一下我对机器学习一些宏观的看待，这些是我学习中的一点心得，不一定完全准确，如果有有问题的部分，欢迎大家进行批判指正。</p>
+<h3 id="1、人工智能、机器学习和神经网络的关系"><a href="#1、人工智能、机器学习和神经网络的关系" class="headerlink" title="1、人工智能、机器学习和神经网络的关系"></a>1、人工智能、机器学习和神经网络的关系</h3><p>这三个词是依次包含的关系，具体方式为：人工智能的概念最大，它包含机器学习；机器学习的概念次之，它包含神经网络。<br>人工智能是近几年兴起的概念，主要是指可以利用数据、及相关的一些算法技术，使机器产生对人的行为的模拟(个人理解，不一定准确)。人工智能技术包括机器学习、自然语言处理、语音识别、图像处理、模式识别等许多技术，它们互相之间既有连续又有区别。不过可以看到，机器学习不可能等同于人工智能，它只是人工智能的一部分，或者说是人工智能技术的一个重要理论工具。<br>机器学习技术主要是指一系列的算法，这些算法可以通过对已知数据的分析和建模，对未知数据的某些行为作出指导。例如，我可以通过统计1000个男性和女性的身高，并对其分别建模。此后再给出一个人的身高体重数据，我可以通过已有的模型推测他大概是男性还是女性。机器学习包括许多技术，主要分为三个分支，即监督学习、非监督学习和增强学习。有学者曾经评出了“十大最经典的机器学习算法”，有兴趣的读者可以自行百度。<br>机器学习包含多种算法，例如决策树、支持向量机、朴素贝叶斯等。而神经网络也是诸多机器学习算法中的一种。近几年，神经网络算法大火。然而，它并不是一个近期才发展起来的算法。很早就有了神经网络算法，它也曾经火过一段时间，然而，就像很多主播或网红一样，没过多久，它就过气了。它过气主要是因为当时它的未知参数过多导致计算量过大，而且它是一个“黑盒子”模型。因此，当时又出现了“人美声甜”的“支持向量机”算法，理论优美漂亮，参数可调可控，一举便占领了神经网络的宝座，抢走了神经网络的风头。然而风水轮流转，近些年也正是因为大数据技术的发展，计算能力得到了提高，由神经网络演变而来的深度学习技术成为了主导。深度学习技术也确实在图像、视觉、自然语言等方面发挥了它强大的实力。之前的AlphaGo模型就是采用了深度学习技术，让我们看到了机器智能化的潜力。因此神经网络又一举夺回当年的桂冠，成为了时下最炙手可热的算法。</p>
+<h3 id="2、机器学习与数据挖掘的关系"><a href="#2、机器学习与数据挖掘的关系" class="headerlink" title="2、机器学习与数据挖掘的关系"></a>2、机器学习与数据挖掘的关系</h3><p>要说机器学习和数据挖掘，其实他俩的区别真心不算特别大。很多书或教材也会把它们叫混，这倒也不是因为写东西的人不知道它们的区别，而实在是它们的区别不大，没必要那么强调它们的不同。<br>要说起区分，机器学习比数据挖掘的概念要窄。我认为有如下公式。<br>数据挖掘=机器学习+数据处理技术<br>机器学习主要是一系列的算法理论，它是理论上的东西，强调各种算法的联系和区别、算法的优化等。而数据挖掘主要是强调工程上的东西，如如何获取到数据、如何存储这些数据、如何清洗这些数据、如何提取合适的特征、如何选用合适的机器学习算法及合适的参数、如何评估等。</p>
+<h3 id="3、神经网络与深度学习的关系"><a href="#3、神经网络与深度学习的关系" class="headerlink" title="3、神经网络与深度学习的关系"></a>3、神经网络与深度学习的关系</h3><p>深度学习是神经网络的一种，又称为“深度神经网络”。言外之意，神经网络还有“浅层的”，那种就只是神经网络，不是深度学习。<br>神经网络的参数量巨大，深度学习更是动辄几百上千个参数，数据量的增多、计算能力的增强为深度学习开辟了土壤，在近几年大放异彩。</p>
+<h3 id="4、大数据与其他名词的关系"><a href="#4、大数据与其他名词的关系" class="headerlink" title="4、大数据与其他名词的关系"></a>4、大数据与其他名词的关系</h3><p>我个人觉得，大数据这个词和前面的这些词并不是在描述同一个东西，或者它们看问题的切入点不一样。其他词语更在于“智能”和“挖掘”两个方面，而大数据的侧重点在它的“大”上。这个“大”可以是没有智能相关技术的大。例如，它可以仅是大的数据量、大的速度、大的存储，大的计算能力。但不可否认的是，正是因为大的数据，我们才能更好地从数据中挖掘信息，才有了今天的人工智能、深度学习等技术的飞黄腾达。我认为，大数据和人工智能更像是一个人的两条腿，是一个互相支持，互相促进的关系。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/24/机器学习小白之路 （一）机器学习各项相关宏观知识综述/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（八）贝叶斯算法族、朴素贝叶斯/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（七）EM算法族  EM、GMM/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（六）K-Means聚类、层次聚类、密度聚类、谱聚类/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（五）集成/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（四）决策树/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（三）支持向量机/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（一）线性回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （一）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T10:06:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （二）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路（序）———谈谈入坑和入坑后的感想/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    </nav>
   
-
-    
 
 
           </div>
@@ -560,9 +644,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

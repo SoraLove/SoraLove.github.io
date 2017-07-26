@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="">
-  <title>Archives: 2017/7 | 谦芊珺的博客</title>
+  <title>谦芊珺的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="机器学习  人工智能">
 <meta name="keywords" content="机器学习，人工智能">
 <meta property="og:type" content="website">
 <meta property="og:title" content="谦芊珺的博客">
-<meta property="og:url" content="/archives/2017/07/index.html">
+<meta property="og:url" content="/page/3/index.html">
 <meta property="og:site_name" content="谦芊珺的博客">
 <meta property="og:description" content="机器学习  人工智能">
 <meta name="twitter:card" content="summary">
@@ -147,398 +147,110 @@
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-机器学习小白之路 （二）机器学习各项相关宏观知识综述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="机器学习小白之路-（二）机器学习各项相关宏观知识综述"><a href="#机器学习小白之路-（二）机器学习各项相关宏观知识综述" class="headerlink" title="机器学习小白之路 （二）机器学习各项相关宏观知识综述"></a>机器学习小白之路 （二）机器学习各项相关宏观知识综述</h1><h2 id="各项技术的基本涵盖点和主要技术"><a href="#各项技术的基本涵盖点和主要技术" class="headerlink" title="各项技术的基本涵盖点和主要技术"></a>各项技术的基本涵盖点和主要技术</h2><h3 id="1、大数据技术"><a href="#1、大数据技术" class="headerlink" title="1、大数据技术"></a>1、大数据技术</h3><p>前面已经多次提到了，大数据技术主要包括大数据的获取、存储、处理等。其相关核心技术包括：<br>1、大数据的获取目前主要来源于大型互联网公司的数据、大量移动端数据、传感器数据等。同时大量的网页中包含许多非结构化数据，如淘宝图片、淘宝评论、微博评论等，这些数据需要通过爬虫获取。<br>2、大数据的存储不同于一般数据的存储。一般数据可以存储在关系型数据库里，而大数据由于数量巨大，往往很难用一台机器的数据库进行存储，因此可以存储在分布式数据库里。另外，由于大量非结构化数据的存在，这些数据需要存储在非关系型数据库里。<br>3、大数据的计算需要很强的计算能力，在早年只有CPU的时候，执行一些大运算量的计算是很艰难的。现在有了GPU，GPU用它的矩阵操作能力和大带宽为高计算量打开了新的大门。现在硬件技术还在继续发展，google开放的TPU据说比GPU还要快上25倍。总之无论如何，人们对大数据量技术的硬件技术探索不会停止。<br>4、提到大数据，不得不提的就是大数据框架。目前比较主流的几个大数据框架包括hadoop、spark和storm。其中，hadoop可以说是最为经典也是最被人广泛使用的框架。它的前身是google提出的“三架马车”，GFS，MapReduce和Bigtable。现在hadoop已经成为了一个拥有完整生态系统的架构。然而hadoop也有它固有的缺点。比如，它的计算模式只有map和reduce两种，不够灵活；计算速度慢等。Spark的出现改善了这种情况，Spark采用内存计算机制，使计算更快，并设计了多种RDD，有多种操作。同时Spark生态系统中还综合了流处理、图计算等技术，使其成为了更加炙手可热的分布式框架。Storm主要用于流处理，近几年没那么火了，所以不说了。</p>
+<h3 id="2、机器学习技术"><a href="#2、机器学习技术" class="headerlink" title="2、机器学习技术"></a>2、机器学习技术</h3><p>机器学习是一系列算法的合称，这些算法均可以帮助我们从一群数据中挖掘出想要的信息。机器学习算法的分类有不同的指标，比较常见的是将机器学习算法分为监督学习、非监督学习和增强学习三个大类。<br>1、监督学习：机器学习算法中最庞大的一个分支，拥有众多经典算法。监督学习需要训练数据，通过训练数据可以训练出一个模型。将新的数据放入训练出的模型后就能得到预测的结果。比较经典的监督学习算法包括决策树、支持向量机、朴素贝叶斯、逻辑斯蒂回归等。<br>2、非监督学习，非监督学习不需要训练数据和训练过程，它利用已有数据自身的性质将它们天然地分成多类。常用的非监督学习主要是各种聚类算法，如K-means聚类、谱聚类、密度聚类、层次聚类等。<br>3、增强学习：增强学习需要将训练的结果对训练过程做出反馈。如果训练结果是好的就给正反馈，如果训练结果不好就给负反馈。以此来不断调整学习的策略。</p>
+<h3 id="3、数据挖掘技术"><a href="#3、数据挖掘技术" class="headerlink" title="3、数据挖掘技术"></a>3、数据挖掘技术</h3><p>谈到数据挖掘技术，我主要想谈一谈数据分析技术。数据分析技术包括一个基本流程，这个流程如下所示：<br>1、业务分析<br>2、数据采集<br>3、数据预处理<br>4、数据建模<br>5、模型评估<br>6、结果可视化<br>以上6步是一个完整的数据分析流程。其中，业务分析和数据采集是分析的准备阶段；数据预处理是数据分析的基础，它的目的是将采集回来的原始数据清洗、转换成为可以直接拿来建模的数据。例如，采回来的的数据中可能会有一些缺失数据、而且采集数据可能过于稀疏等，这些都需要进行变换。同时，特征工程也是数据预处理中至关重要的步骤。数据往往有诸多特征，这些特征也许并不是全都有用的。有很多冗余。有些特征甚至对数据还有负的影响作用。这些特征都需要特征工程去处理。数据建模就是将预处理好的数据用各种机器学习算法进行训练，得到训练模型。得到模型后，在模型评估阶段，我们将用测试数据对模型进行评估，常用的评估方法是k-折交叉验证法，常用的指标包括precision、recall、F-value等。最后的可视化主要是对结果的一个对外交互。属于比较上层的部分。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（二）逻辑斯蒂回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/24/机器学习小白之路 （二）机器学习各项相关宏观知识综述/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（六）词向量/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-机器学习小白之路（序）———谈谈入坑和入坑后的感想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="机器学习小白之路（序）———谈谈入坑和入坑后的感想"><a href="#机器学习小白之路（序）———谈谈入坑和入坑后的感想" class="headerlink" title="机器学习小白之路（序）———谈谈入坑和入坑后的感想"></a>机器学习小白之路（序）———谈谈入坑和入坑后的感想</h1><h2 id="一、我是如何入坑的"><a href="#一、我是如何入坑的" class="headerlink" title="一、我是如何入坑的"></a>一、我是如何入坑的</h2><p>我在读本科的时候对“机器学习”、“人工智能”等名词是完全没有概念的。当时读的是电子信息工程专业，每天主要就是和各种信号处理机制、滤波器、调制解调器等打交道，当时一心想读一个通信领域或信号领域的研究生，为国家的通讯事业奉献一生。然而一个偶然，读研期间选择了一个以“大数据”为主要研究方向的导师，自此生活便走上了与数据相关的道路，和信号处理那些东西就不在有什么关系了。<br>记得我刚考上研究生的时候，对“大数据”毛线都不懂。然后就被导师要求写一篇关于大数据的综述调研。我硬着头皮鏖战了好几天，最终写出了一个以hadoop框架和spark框架为主的四不像的东西。最后导师看了估计心里暗暗叹了口气，然后这件事就没有然后了。<br>但是在这次没什么技术含量的调研当中，我还是大致初窥了大数据领域的全貌。我大概了解到，大数据技术之所以在近期倍广泛的提出，主要是由于移动互联网和物联网的普及产生了大量数据，并且我们有了越来越强大的存储资源和计算资源。在有了数据，又有了处理数据的能力之后，我们便产生了从这些数据中挖掘信息的想法。因此也催生了大数据的一系列相关技术。<br>大数据技术主要包括以下一些方面：大数据获取、大数据存储、大数据并行计算、大数据清洗处理、大数据中的数据挖掘、机器学习、结果可视化等。其中，大数据的数据挖掘和机器学习技术应该算是大数据各项技术中较为核心且更偏重于理论和算法等技术。它们也是从数据中挖掘信息的关键技术。可以说，无论是存储技术还是计算能力的提升，都是为通过机器学习等技术挖掘信息作准备工作的。因此，当时的我就对数据挖掘和机器学习技术有了较深的印象。<br>比较严肃的扯了一堆，以上说的基本都是废话，真正使我入坑的原因是我是个臭美的妹子而在我苦恼淘宝找不到合适我的好看衣服时我猛然发现机器学习就是干这个的。<br>于是我就入坑了，然后就没有然后了。</p>
+<h2 id="二、谈谈我的感想"><a href="#二、谈谈我的感想" class="headerlink" title="二、谈谈我的感想"></a>二、谈谈我的感想</h2><p>入坑后我就开始搜集各方面的资料，并寻找一些机会来学习机器学习的相关知识。当时主要是上了一些数据挖掘相关的课程，当时用的是R语言，跟着老师做了一些比较简单的手写数字识别、文理科分类、简单预测任务等。这个学科刚开始学的时候有一种越学越有趣的感觉。因为机器学习真的可以做好多有趣的事情，比如可以预测下一个季度的流行歌手，预测一场球赛的胜利、预测股市的涨跌等。虽然很多尝试仅仅可以用在实验中，比如预测股市的涨跌，如果你真的相信你训练的模型，搞不好会血本无归。但是这种憧憬是好的，学习机器学习的动力充足无比，好像学完了我就可以预测未来拯救地球一样。<br>在简单学习了一些基础算法使用和R语言之后，我又开始学一些算法深层的东西，比如SVM的算法原理、决策树、朴素贝叶斯的算法原理等。从数学层面渐渐了解了更多的机器学习算法。<br>学习的期间主要还看了一些书，比如李航的《统计学习方法》、周志华的《机器学习》等，这两本书写的真的很好，让我看到了所谓的大家风范。读书期间，慢慢领悟到，机器学习不仅仅是几个算法、几个任务，它更是一个需要综合多种领域知识的非常集大成的技术群。慢慢地也感受到了这个领域存在的竞争和难点。<br>现在的我虽然还是一个小白，但对机器学习也有了一些更深的认识。最近也快要找工作了，发现大多数的机器学习岗位其实并不想一开始学习时想象的那么有趣。在工作中，可能有70%的时间是在“清洗数据”，也就是在乱七八糟数据中“捡垃圾”，挑出那些不能用的、对结果有负影响的数据；90%的时间在调参数，也就是把程序都写好了，然后用一个参数跑一遍，不好了换个参数再跑一遍。这些过程都是比较无聊的。那么高大上的算法部分去哪了呢？一般在程序中，那些著名的算法都被封装好了，用起来仅仅是一句话而已。<br>以上就是我对机器学习领域对入坑到现在的一个整体认识。你说它神奇，它没那么神奇。你不可能学习它就去拯救地球，改变世界，成为下一个巴菲特，很多时候，你发现给你一堆数据让你分个男女你都只能得到70%左右的准确率；另一方面，你说它枯燥无聊，而它确实在慢慢改变这个世界。AlphaGo、无人车、增强现实等技术无一不是基于它的基础理论。因此对于机器学习，应该洗尽铅华，辩证的看待，毕竟它到底有没有用，还是要看你是不是大牛而已。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/24/机器学习小白之路（序）———谈谈入坑和入坑后的感想/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（五）深度学习/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（四）统计机器翻译SMT/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（三）主题模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（二）语言模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/自然语言处理（一）基础/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（九）EM和贝叶斯网络的结合  HMM模型/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（八）贝叶斯算法族、朴素贝叶斯/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（七）EM算法族  EM、GMM/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（六）K-Means聚类、层次聚类、密度聚类、谱聚类/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（五）集成/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（四）决策树/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（三）支持向量机/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/26/机器学习算法（一）线性回归/" class="archive-article-date">
-  	<time datetime="2017-07-26T15:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （一）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T10:06:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路 （二）机器学习各项相关宏观知识综述/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/24/机器学习小白之路（序）———谈谈入坑和入坑后的感想/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:30:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
-
-    
 
 
           </div>
@@ -560,9 +272,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
