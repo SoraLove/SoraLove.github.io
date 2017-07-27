@@ -14,20 +14,18 @@
 <meta name="author" content="谦芊珺" />
 
 
-    
-    
 
-
-<meta name="description" content="机器学习  人工智能">
-<meta name="keywords" content="机器学习，人工智能">
-<meta property="og:type" content="website">
-<meta property="og:title" content="谦芊珺的博客">
-<meta property="og:url" content="/page/3/index.html">
+<meta name="description" content="一、GMM算法EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。 1、GMM算法问题描述GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。 假设有n个样本点$x_{1},x_{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数： 1、不同高斯分布的数据占比：$\pi_{i}$2、每个高斯分布的均值与方差：$\pi_{i">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习（七）EM算法与GMM">
+<meta property="og:url" content="/2017/07/27/机器学习（七）EM算法与GMM/index.html">
 <meta property="og:site_name" content="谦芊珺的博客">
-<meta property="og:description" content="机器学习  人工智能">
+<meta property="og:description" content="一、GMM算法EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。 1、GMM算法问题描述GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。 假设有n个样本点$x_{1},x_{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数： 1、不同高斯分布的数据占比：$\pi_{i}$2、每个高斯分布的均值与方差：$\pi_{i">
+<meta property="og:updated_time" content="2017-07-26T17:14:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="谦芊珺的博客">
-<meta name="twitter:description" content="机器学习  人工智能">
+<meta name="twitter:title" content="机器学习（七）EM算法与GMM">
+<meta name="twitter:description" content="一、GMM算法EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。 1、GMM算法问题描述GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。 假设有n个样本点$x_{1},x_{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数： 1、不同高斯分布的数据占比：$\pi_{i}$2、每个高斯分布的均值与方差：$\pi_{i">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,13 +53,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>谦芊珺的博客</title>
+<title>机器学习（七）EM算法与GMM | 谦芊珺的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -70,8 +66,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -268,13 +264,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-机器学习（二）逻辑斯蒂回归" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-机器学习（七）EM算法与GMM" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/27/机器学习（二）逻辑斯蒂回归/" class="article-date">
-      <time datetime="2017-07-26T17:07:09.000Z" itemprop="datePublished">2017-07-27</time>
+      <a href="/2017/07/27/机器学习（七）EM算法与GMM/" class="article-date">
+      <time datetime="2017-07-26T17:14:02.000Z" itemprop="datePublished">2017-07-27</time>
 </a>
 
 
@@ -288,239 +282,145 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/27/机器学习（二）逻辑斯蒂回归/">机器学习（二）逻辑斯蒂回归</a>
+    <h1 class="article-title" itemprop="name">
+      机器学习（七）EM算法与GMM
     </h1>
   
 
       </header>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>上文中说过，逻辑斯蒂回归虽然称为回归，但它实际上是一种分类算法。认识逻辑斯蒂回归，首先需要知道sigmoid函数。下面公式1即为sigmoid函数$$g\left( x\right) =\dfrac {1}{1+e^{-x}}$$它的函数图像如图所示。<br><img src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAiVAAAAJGNiYjA1NjM2LTY4OWUtNDJmYS04NTdkLTA5Y2NkMzcxZDZlMA.png" alt="这里写图片描述"></p>
-<h2 id="1、算法介绍"><a href="#1、算法介绍" class="headerlink" title="1、算法介绍"></a>1、算法介绍</h2><p>和上文中的回归算法一样，我们有m条数据，每条数据有n个特征和1个标签。不同的是，上文的标签是一个连续型变量，本文中的标签是一个离散型变量，且它只有两个值，[0,1]。<br>在线性回归中，有$\widehat{y}=\theta ^{T}x$，而在逻辑斯蒂回归中，其结果就是在线性回归外面套上sigmoid函数，即$$\widehat {y}=\dfrac {1}{1+e^{-\theta ^{T}x}}$$因此，$\widehat {y}$是一个连续变量，其取值范围为(0,1)。</p>
-<p>对于$y$和$\widehat {y}$,我们希望，当$\widehat {y}$接近1时，$y$也大概率为1；当$\widehat {y}$接近0时，$y$也大概率为0。因此可以做出如下假设。<br>$$p(y=1| x,\theta )=\widehat {y}$$ $$p(y=0| x,\theta )=1-\widehat {y}$$<br>以上两式可以统一为$$P\left( y| x,\theta \right) =\widehat {y}^{y}\left( 1-\widehat {y}\right) ^{1-y}$$同理，由于x和y均已知，它是一个关于$\theta$的函数。<br>据此可求出其最大似然函数：$$L\left( \theta \right) =\prod ^{m}_{i=1}\widehat {y}^{y}\left( 1-\widehat {y}\right) ^{1-y}$$，$i$为第$i$个样本。<br>同理，可求其对数似然函数为$l\left( \theta \right)$，并对每个$\theta$求偏导。求导结果为：$$\dfrac {\partial l\left( \theta \right) }{\partial \theta_{ j}}=\sum ^{m}_{i=1}\left( y^{i}-\widehat {y}^{i}\right) x^{i}_{j}$$</p>
-<p>对其进行梯度上升学习，有<br>$$\theta _{j}=\theta _{j}+\alpha \left( y-\widehat {y}\right) x_{j}$$</p>
-<p>逻辑斯蒂回归的目标函数被习惯性的认为成对数似然函数的相反数，即$$loss=-l\left( \theta \right) $$</p>
-<p>前文中，我们认为y的取值为0，1。若认为y的取值为+1和-1，则可推导出一个较为优美的损失函数如下。$$loss=\sum ^{m}_{i=1}\left[ \ln \left( 1+e^{-y_{i}\widehat {y}_{i}}\right) \right] $$</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-机器学习（一）线性回归" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/07/27/机器学习（一）线性回归/" class="article-date">
-      <time datetime="2017-07-26T17:04:40.000Z" itemprop="datePublished">2017-07-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+      <div class="article-info article-info-post">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/27/机器学习（一）线性回归/">机器学习（一）线性回归</a>
-    </h1>
-  
 
-      </header>
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="机器学习算法（一）线性回归"><a href="#机器学习算法（一）线性回归" class="headerlink" title="机器学习算法（一）线性回归"></a>机器学习算法（一）线性回归</h1><p>本文主要梳理一下线性回归和逻辑斯蒂回归这两大算法。这两个算法的关系是什么呢？答案是并没有什么关系。<br>这样说其实也不对，逻辑斯蒂回归里有线性回归的重要组成部分。但是二者又一个本质区别，就是线性回归是一个“回归”算法，而逻辑斯蒂回归是一个“分类”算法。这就导致两个算法永远像牛郎织女一样隔着银河。本文主要介绍线性回归，下篇文章会在本文的基础上介绍逻辑斯蒂回归。本文思路主要来自邹博的机器学习课程。<strong>本文为作者自己学习整理的笔记，转载请注明出处。</strong></p>
-<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="1、输入描述："><a href="#1、输入描述：" class="headerlink" title="1、输入描述："></a>1、输入描述：</h3><p>有训练数据集D，其中共有m条数据，n个特征，如下表所示。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">数据id</th>
-<th style="text-align:center">数学</th>
-<th style="text-align:center">语文</th>
-<th style="text-align:center">英语</th>
-<th style="text-align:center">物理</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">学生1</td>
-<td style="text-align:center">98</td>
-<td style="text-align:center">92</td>
-<td style="text-align:center">96</td>
-<td style="text-align:center">83</td>
-</tr>
-<tr>
-<td style="text-align:center">学生2</td>
-<td style="text-align:center">95</td>
-<td style="text-align:center">79</td>
-<td style="text-align:center">86</td>
-<td style="text-align:center">23</td>
-</tr>
-<tr>
-<td style="text-align:center">…</td>
-<td style="text-align:center">34</td>
-<td style="text-align:center">35</td>
-<td style="text-align:center">92</td>
-<td style="text-align:center">92</td>
-</tr>
-<tr>
-<td style="text-align:center">学生m</td>
-<td style="text-align:center">67</td>
-<td style="text-align:center">68</td>
-<td style="text-align:center">94</td>
-<td style="text-align:center">72</td>
-</tr>
-</tbody>
-</table>
-<p>上表是一个数据表的简单示例，其中包含m条数据，每条数据代表了一名学生；4个特征，分别是数学成绩、语文成绩、英语成绩、物理成绩。</p>
-<p>以上是一个具体的表格，我们可以抽象表格如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">数据id</th>
-<th style="text-align:center">属性1</th>
-<th style="text-align:center">属性2</th>
-<th style="text-align:center">…</th>
-<th style="text-align:center">属性n</th>
-<th style="text-align:center">预测值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">x11</td>
-<td style="text-align:center">x12</td>
-<td style="text-align:center">…</td>
-<td style="text-align:center">x1n</td>
-<td style="text-align:center">y1</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">x21</td>
-<td style="text-align:center">x22</td>
-<td style="text-align:center">…</td>
-<td style="text-align:center">x2n</td>
-<td style="text-align:center">y2</td>
-</tr>
-<tr>
-<td style="text-align:center">…</td>
-<td style="text-align:center">…</td>
-<td style="text-align:center">…</td>
-<td style="text-align:center">…</td>
-<td style="text-align:center">…</td>
-<td style="text-align:center">…</td>
-</tr>
-<tr>
-<td style="text-align:center">m</td>
-<td style="text-align:center">xm1</td>
-<td style="text-align:center">xm2</td>
-<td style="text-align:center">…</td>
-<td style="text-align:center">xmn</td>
-<td style="text-align:center">ym</td>
-</tr>
-</tbody>
-</table>
-<p>对于其中的某一条数据，可以认为如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">属性1</th>
-<th style="text-align:center">属性2</th>
-<th style="text-align:center">…</th>
-<th style="text-align:center">属性n</th>
-<th style="text-align:center">预测值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">x1</td>
-<td style="text-align:center">x2</td>
-<td style="text-align:center">…</td>
-<td style="text-align:center">xn</td>
-<td style="text-align:center">y</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2、问题描述"><a href="#2、问题描述" class="headerlink" title="2、问题描述"></a>2、问题描述</h3><p>线性回归就是要解决以下问题：</p>
-<p>要建立一如下公式1：$$y=h_{\theta }\left( x\right) =\theta _{0}+\theta _{1}x_{1}+\theta _{2}x_{2}+\ldots +\theta _{n}x_{n}$$<br>    我们的目标就是在已知一些数据后，求出该方程的系数，即$\theta _{0}$,$\theta _{1}$,…,$\theta _{n}$.</p>
-<h3 id="3、算法推导"><a href="#3、算法推导" class="headerlink" title="3、算法推导"></a>3、算法推导</h3><p>上面公式1可做如下变形（公式2）$$\widehat{y}=h_{\theta }\left( x\right) =\sum ^{n}_{i=1}\theta _{i}x_{i}=\theta ^{T}x$$</p>
-<p>对于数据标签的真实值，我们可以设为$y$,而对于数据用公式1和所有$x$计算得到的值为估计值，设为$\widehat{y}$.</p>
-<p>因此有公式3$$y=\widehat {y}+\varepsilon $$</p>
-<p>其中，这个$\varepsilon$可以认为是噪声。</p>
-<p>根据中心极限定理，我们可以认为这个$\varepsilon$服从正态分布，即$$\varepsilon \sim N\left( 0,\sigma ^{2}\right) $$<br>因此，有公式4$$P\left( \varepsilon \right) =\dfrac {1}{\sqrt {2\pi \sigma }}exp\left( -\dfrac {\varepsilon ^{2}}{2\sigma ^{2}}\right) $$<br>因为$$\varepsilon=y-\widehat {y}$$<br>带入公式4，将$\varepsilon$和$x$视为常数，则可将$P\left( \varepsilon \right)$看成是关于$\theta$的函数。即$P\left( \varepsilon \right) =g\left( \theta \right) $<br>根据最大似然定理，可得关于$\theta$的似然函数为公式5$$L\left( \theta \right) =\prod ^{m}_{i=1}\dfrac {1}{\sqrt {2\pi }\sigma }exp\left( -\dfrac {\left( y^{i}-\theta ^{T}x^{i}\right) ^{2}}{2\sigma ^{2}}\right) $$<br>其中，$i$表示第$i$条数据。该式中，仅$\theta$为未知量，我们要做的事就是求出一组$\theta$，使$L\left( \theta \right)$最大。<br>对于公式5，可以对其取$log$求出其对数似然函数。对其对数似然函数可以进一步化简，最终，我们可得到如下的目标函数（公式6）：求出一组$\theta$使$$J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}_{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}$$最小。<br>此处略去求解过程，该式的解决方式是令$J\left( \theta \right)$对$\theta$求导并令其等于0。最后可求得公式7:$$\theta =\left( x^{T}x\right) ^{-1}x^{T}y$$<br>当以公式6为目标函数时，并没有考虑过拟合的问题。若想减少过拟合风险，可以对该目标函数加入正则项，常用的方法有以下两种：<br>1、L1正则（又称LASSO回归）<br>      其目标函数是公式8:<br>      $$J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}_{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}+\lambda \sum ^{n}_{j=1}\left| \theta _{j}\right| $$</p>
-<p>2、L2正则（又称岭回归）<br>其目标函数是公式9:<br>      $$J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}_{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}+\lambda \sum ^{n}_{j=1}\theta ^{2}_{j}$$</p>
-<p>实际上，一般用公式7直接求出$\theta$是很难的。一般我们会采用梯度下降的方法来求出一个局部最优的$\theta$。</p>
-<p>综上，线性回归的目标函数为：公式6、公式8或公式9。即<br>$$loss=J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}_{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}$$或$$loss=J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}_{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}+\lambda \sum ^{n}_{j=1}\left| \theta _{j}\right| $$或$$loss=J\left( \theta \right) =\dfrac {1}{2}\sum ^{m}_{i=1}\left( \theta ^{T}x^{i}-y^{i}\right) ^{2}+\lambda \sum ^{n}_{j=1}\theta ^{2}_{j}$$</p>
+        <h1 id="一、GMM算法"><a href="#一、GMM算法" class="headerlink" title="一、GMM算法"></a>一、GMM算法</h1><p>EM算法实在是难以介绍清楚，因此我们用EM算法的一个特例GMM算法作为引入。</p>
+<h2 id="1、GMM算法问题描述"><a href="#1、GMM算法问题描述" class="headerlink" title="1、GMM算法问题描述"></a>1、GMM算法问题描述</h2><p>GMM模型称为混合高斯分布，顾名思义，它是由几组分别符合不同参数的高斯分布的数据混合而成的。</p>
+<p>假设有n个样本点$x_{1},x_{2},…,x_{n}$,它们来自K个不同的高斯分布。有如下参数：</p>
+<p>1、不同高斯分布的数据占比：$\pi_{i}$<br>2、每个高斯分布的均值与方差：$\pi_{i}~N(\mu_{i},\sigma_{i}^2)$</p>
+<p>我们的目的是求出每个$\pi_{i}$，$\mu_{i}$，$\sigma_{i}$</p>
+<p>因此我们的目标即是求合适的$\pi_{i}$，$\mu_{i}$，$\sigma_{i}$来最大化对数似然函数。</p>
+<p>$$l_{\pi,\mu\sigma}(x)=\sum^{N}_{i=1}log[\sum^{K}_{k=1}\pi_{k}N(x_{I}|\mu_{k},\sigma_{k})]$$<br>这个目标函数中既有对数又有加和，因此不能直接求导因此我们采用迭代的方法。</p>
+<h2 id="2、GMM迭代方法描述"><a href="#2、GMM迭代方法描述" class="headerlink" title="2、GMM迭代方法描述"></a>2、GMM迭代方法描述</h2><p>Step1:对于每一个样本点i，计算它由不同组分(第k个组分)生成的概率$$r(i,k)=\dfrac{\pi_{k}N(x_{i}|\mu_{k},\sigma_{k})}{\sum^{K}_{j=1}\pi_{j}N(x_{i}|\mu_{j},\sigma_{j})}$$<br>Step2:由各个样本点的$r(i,k)$更新参数$\pi_{i}$，$\mu_{i}$，$\sigma_{I}$</p>
+<p>Step3:回到Step1，迭代更新</p>
+<p>这其实就是EM算法的E步和M步的过程。</p>
+<p>下面给出通用的EM算法伪代码。</p>
+<h2 id="3、EM算法"><a href="#3、EM算法" class="headerlink" title="3、EM算法"></a>3、EM算法</h2><p><python><br>Repeat util 收敛{<br>    (E步)：对每个样本$x_{i}$,计算$$Q_{i}(z^{i})=P(z^{i}|x^{i};\theta)$$<br>    (M步)：对每个参数$\theta$，有$$\theta:=argmax_{\theta }l\left( \theta \right) =argmax_{\theta}\sum^{}_{i}\sum^{}_{z^{i}}Q_{i}(z^{i})log\dfrac{P(x_{i};z_{i};\theta)}{Q_{i}(z_{i})}$$<br>}</python></p>
+<python>
 
+<p>其中，E步的那个$Q$就是第i个样本的分布，就是那个$r(i,k)$<br>这个形式可以推导可得，其实是等价的</p>
+<p>M步中，那个公式就是对数似然函数，求使它最大化的参数</p>
+<p>总结：EM算法说到底是一个迭代更新的过程。它首先对各个样本计算分布，然后更新参数；再计算分布，再更新参数……</p>
+</python>
       
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
-</article>
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2017/07/27/机器学习（七）EM算法与GMM/">机器学习（七）EM算法与GMM</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">谦芊珺</a></p>
+        <p><span>Created:</span>2017-07-27, 01:14:02</p>
+        <p><span>Updated:</span>2017-07-27, 01:14:32</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2017/07/27/机器学习（七）EM算法与GMM/" title="机器学习（七）EM算法与GMM">/2017/07/27/机器学习（七）EM算法与GMM/</a>
+            <span class="copy-path" data-clipboard-text="From /2017/07/27/机器学习（七）EM算法与GMM/　　By 谦芊珺" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
 
 
 
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/07/27/机器学习（八）贝叶斯网络与朴素贝叶斯/">
+                    机器学习（八）贝叶斯网络与朴素贝叶斯
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/07/27/机器学习（六）多种常用聚类/">
+                    机器学习（六）多种常用聚类
+                </a>
+            </div>
+        
     </nav>
+
   
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、GMM算法"><span class="toc-number">1.</span> <span class="toc-text">一、GMM算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、GMM算法问题描述"><span class="toc-number">1.1.</span> <span class="toc-text">1、GMM算法问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、GMM迭代方法描述"><span class="toc-number">1.2.</span> <span class="toc-text">2、GMM迭代方法描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、EM算法"><span class="toc-number">1.3.</span> <span class="toc-text">3、EM算法</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/07/27/机器学习（八）贝叶斯网络与朴素贝叶斯/" title="Pre: 机器学习（八）贝叶斯网络与朴素贝叶斯">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/07/27/机器学习（六）多种常用聚类/" title="Next: 机器学习（六）多种常用聚类">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/小白之路（三）/">小白之路（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/小白之路（二）/">小白之路（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/小白之路（一）/">小白之路（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（六）词向量/">自然语言处理（六）词向量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（五）深度学习/">自然语言处理（五）深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（四）统计机器翻译SMT/">自然语言处理（四）统计机器翻译SMT</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（三）主题模型/">自然语言处理（三）主题模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（二）语言模型/">自然语言处理（二）语言模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（一）基础/">自然语言处理（一）基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（九）EM和贝叶斯的结合：HMM/">机器学习（九）EM和贝叶斯的结合：HMM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（八）贝叶斯网络与朴素贝叶斯/">机器学习（八）贝叶斯网络与朴素贝叶斯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（七）EM算法与GMM/">机器学习（七）EM算法与GMM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（六）多种常用聚类/">机器学习（六）多种常用聚类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（五）集成/">机器学习（五）集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（四）决策树/">机器学习（四）决策树</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（三）支持向量机/">机器学习（三）支持向量机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（二）逻辑斯蒂回归/">机器学习（二）逻辑斯蒂回归</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（一）线性回归/">机器学习（一）线性回归</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

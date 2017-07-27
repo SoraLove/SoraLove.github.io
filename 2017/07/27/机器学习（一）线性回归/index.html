@@ -14,20 +14,18 @@
 <meta name="author" content="谦芊珺" />
 
 
-    
-    
 
-
-<meta name="description" content="机器学习  人工智能">
-<meta name="keywords" content="机器学习，人工智能">
-<meta property="og:type" content="website">
-<meta property="og:title" content="谦芊珺的博客">
-<meta property="og:url" content="/page/3/index.html">
+<meta name="description" content="机器学习算法（一）线性回归本文主要梳理一下线性回归和逻辑斯蒂回归这两大算法。这两个算法的关系是什么呢？答案是并没有什么关系。这样说其实也不对，逻辑斯蒂回归里有线性回归的重要组成部分。但是二者又一个本质区别，就是线性回归是一个“回归”算法，而逻辑斯蒂回归是一个“分类”算法。这就导致两个算法永远像牛郎织女一样隔着银河。本文主要介绍线性回归，下篇文章会在本文的基础上介绍逻辑斯蒂回归。本文思路主要来自邹博">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习（一）线性回归">
+<meta property="og:url" content="/2017/07/27/机器学习（一）线性回归/index.html">
 <meta property="og:site_name" content="谦芊珺的博客">
-<meta property="og:description" content="机器学习  人工智能">
+<meta property="og:description" content="机器学习算法（一）线性回归本文主要梳理一下线性回归和逻辑斯蒂回归这两大算法。这两个算法的关系是什么呢？答案是并没有什么关系。这样说其实也不对，逻辑斯蒂回归里有线性回归的重要组成部分。但是二者又一个本质区别，就是线性回归是一个“回归”算法，而逻辑斯蒂回归是一个“分类”算法。这就导致两个算法永远像牛郎织女一样隔着银河。本文主要介绍线性回归，下篇文章会在本文的基础上介绍逻辑斯蒂回归。本文思路主要来自邹博">
+<meta property="og:updated_time" content="2017-07-26T17:05:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="谦芊珺的博客">
-<meta name="twitter:description" content="机器学习  人工智能">
+<meta name="twitter:title" content="机器学习（一）线性回归">
+<meta name="twitter:description" content="机器学习算法（一）线性回归本文主要梳理一下线性回归和逻辑斯蒂回归这两大算法。这两个算法的关系是什么呢？答案是并没有什么关系。这样说其实也不对，逻辑斯蒂回归里有线性回归的重要组成部分。但是二者又一个本质区别，就是线性回归是一个“回归”算法，而逻辑斯蒂回归是一个“分类”算法。这就导致两个算法永远像牛郎织女一样隔着银河。本文主要介绍线性回归，下篇文章会在本文的基础上介绍逻辑斯蒂回归。本文思路主要来自邹博">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,13 +53,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>谦芊珺的博客</title>
+<title>机器学习（一）线性回归 | 谦芊珺的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -70,8 +66,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -268,74 +264,7 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-机器学习（二）逻辑斯蒂回归" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/07/27/机器学习（二）逻辑斯蒂回归/" class="article-date">
-      <time datetime="2017-07-26T17:07:09.000Z" itemprop="datePublished">2017-07-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/27/机器学习（二）逻辑斯蒂回归/">机器学习（二）逻辑斯蒂回归</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>上文中说过，逻辑斯蒂回归虽然称为回归，但它实际上是一种分类算法。认识逻辑斯蒂回归，首先需要知道sigmoid函数。下面公式1即为sigmoid函数$$g\left( x\right) =\dfrac {1}{1+e^{-x}}$$它的函数图像如图所示。<br><img src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAiVAAAAJGNiYjA1NjM2LTY4OWUtNDJmYS04NTdkLTA5Y2NkMzcxZDZlMA.png" alt="这里写图片描述"></p>
-<h2 id="1、算法介绍"><a href="#1、算法介绍" class="headerlink" title="1、算法介绍"></a>1、算法介绍</h2><p>和上文中的回归算法一样，我们有m条数据，每条数据有n个特征和1个标签。不同的是，上文的标签是一个连续型变量，本文中的标签是一个离散型变量，且它只有两个值，[0,1]。<br>在线性回归中，有$\widehat{y}=\theta ^{T}x$，而在逻辑斯蒂回归中，其结果就是在线性回归外面套上sigmoid函数，即$$\widehat {y}=\dfrac {1}{1+e^{-\theta ^{T}x}}$$因此，$\widehat {y}$是一个连续变量，其取值范围为(0,1)。</p>
-<p>对于$y$和$\widehat {y}$,我们希望，当$\widehat {y}$接近1时，$y$也大概率为1；当$\widehat {y}$接近0时，$y$也大概率为0。因此可以做出如下假设。<br>$$p(y=1| x,\theta )=\widehat {y}$$ $$p(y=0| x,\theta )=1-\widehat {y}$$<br>以上两式可以统一为$$P\left( y| x,\theta \right) =\widehat {y}^{y}\left( 1-\widehat {y}\right) ^{1-y}$$同理，由于x和y均已知，它是一个关于$\theta$的函数。<br>据此可求出其最大似然函数：$$L\left( \theta \right) =\prod ^{m}_{i=1}\widehat {y}^{y}\left( 1-\widehat {y}\right) ^{1-y}$$，$i$为第$i$个样本。<br>同理，可求其对数似然函数为$l\left( \theta \right)$，并对每个$\theta$求偏导。求导结果为：$$\dfrac {\partial l\left( \theta \right) }{\partial \theta_{ j}}=\sum ^{m}_{i=1}\left( y^{i}-\widehat {y}^{i}\right) x^{i}_{j}$$</p>
-<p>对其进行梯度上升学习，有<br>$$\theta _{j}=\theta _{j}+\alpha \left( y-\widehat {y}\right) x_{j}$$</p>
-<p>逻辑斯蒂回归的目标函数被习惯性的认为成对数似然函数的相反数，即$$loss=-l\left( \theta \right) $$</p>
-<p>前文中，我们认为y的取值为0，1。若认为y的取值为+1和-1，则可推导出一个较为优美的损失函数如下。$$loss=\sum ^{m}_{i=1}\left[ \ln \left( 1+e^{-y_{i}\widehat {y}_{i}}\right) \right] $$</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-机器学习（一）线性回归" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-机器学习（一）线性回归" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2017/07/27/机器学习（一）线性回归/" class="article-date">
@@ -353,12 +282,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/27/机器学习（一）线性回归/">机器学习（一）线性回归</a>
+    <h1 class="article-title" itemprop="name">
+      机器学习（一）线性回归
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -490,37 +430,94 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2017/07/27/机器学习（一）线性回归/">机器学习（一）线性回归</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">谦芊珺</a></p>
+        <p><span>Created:</span>2017-07-27, 01:04:40</p>
+        <p><span>Updated:</span>2017-07-27, 01:05:55</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2017/07/27/机器学习（一）线性回归/" title="机器学习（一）线性回归">/2017/07/27/机器学习（一）线性回归/</a>
+            <span class="copy-path" data-clipboard-text="From /2017/07/27/机器学习（一）线性回归/　　By 谦芊珺" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/07/27/机器学习（二）逻辑斯蒂回归/">
+                    机器学习（二）逻辑斯蒂回归
+                </a>
+            </div>
+        
+        
+    </nav>
+
   
 </article>
 
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习算法（一）线性回归"><span class="toc-number">1.</span> <span class="toc-text">机器学习算法（一）线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线性回归"><span class="toc-number">1.1.</span> <span class="toc-text">线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、输入描述："><span class="toc-number">1.1.1.</span> <span class="toc-text">1、输入描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、问题描述"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、算法推导"><span class="toc-number">1.1.3.</span> <span class="toc-text">3、算法推导</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
 
 
 
 
 
+    
 
 
 
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
-  
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/07/27/机器学习（二）逻辑斯蒂回归/" title="Pre: 机器学习（二）逻辑斯蒂回归">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/小白之路（三）/">小白之路（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/小白之路（二）/">小白之路（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/小白之路（一）/">小白之路（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（六）词向量/">自然语言处理（六）词向量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（五）深度学习/">自然语言处理（五）深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（四）统计机器翻译SMT/">自然语言处理（四）统计机器翻译SMT</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（三）主题模型/">自然语言处理（三）主题模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（二）语言模型/">自然语言处理（二）语言模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/自然语言处理（一）基础/">自然语言处理（一）基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（九）EM和贝叶斯的结合：HMM/">机器学习（九）EM和贝叶斯的结合：HMM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（八）贝叶斯网络与朴素贝叶斯/">机器学习（八）贝叶斯网络与朴素贝叶斯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（七）EM算法与GMM/">机器学习（七）EM算法与GMM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（六）多种常用聚类/">机器学习（六）多种常用聚类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（五）集成/">机器学习（五）集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（四）决策树/">机器学习（四）决策树</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（三）支持向量机/">机器学习（三）支持向量机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（二）逻辑斯蒂回归/">机器学习（二）逻辑斯蒂回归</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/机器学习（一）线性回归/">机器学习（一）线性回归</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
